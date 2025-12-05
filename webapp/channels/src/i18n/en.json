@@ -5100,7 +5100,7 @@
   "newsletter_optin.checkmark.text": "<span>I would like to receive Mattermost security updates via newsletter.</span> By subscribing, I consent to receive emails from Mattermost with product updates, promotions, and company news. I have read the <a>Privacy Policy</a> and understand that I can <aa>unsubscribe</aa> at any time",
   "newsletter_optin.desc": "Sign up at <a>{link}</a>.",
   "newsletter_optin.title": "Interested in receiving Mattermost security, product, promotions, and company updates updates via newsletter?",
-  "next_steps_view.welcomeToMattermost": "Welcome to Mattermost",
+  "next_steps_view.welcomeToMattermost": "Welcome to Ping",
   "no_results.channel_files_filtered.subtitle": "This channel doesn't contains any file with the selected file format.",
   "no_results.channel_files_filtered.title": "No files found",
   "no_results.channel_files.subtitle": "Files posted in this channel will show here.",

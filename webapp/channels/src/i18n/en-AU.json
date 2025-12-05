@@ -5006,7 +5006,7 @@
   "newsletter_optin.checkmark.text": "I would like to receive Mattermost security updates via newsletter. Data <a>Terms and Conditions</a> apply",
   "newsletter_optin.desc": "Sign up at <a>{link}</a>.",
   "newsletter_optin.title": "Interested in receiving Mattermost security updates via newsletter?",
-  "next_steps_view.welcomeToMattermost": "Welcome to Mattermost",
+  "next_steps_view.welcomeToMattermost": "Welcome to Ping",
   "no_results.Files.subtitle": "Check the spelling or try another search.",
   "no_results.Files.title": "No file results for '\\{searchTerm}'\\",
   "no_results.channel_files.subtitle": "Files posted in this channel will show here.",
