@@ -18,6 +18,13 @@ export default (props: Props) => (
         className={props.className}
         width={props.width}
         height={props.height}
-        style={{maxWidth: props.width ? `${props.width}px` : '182px', maxHeight: props.height ? `${props.height}px` : '30px'}}
+        style={{
+            maxWidth: props.width ? `${props.width}px` : '182px',
+            maxHeight: props.height ? `${props.height}px` : '30px',
+            width: props.width ? `${props.width}px` : 'auto',
+            height: props.height ? `${props.height}px` : 'auto',
+            objectFit: 'contain',
+            display: 'block'
+        }}
     />
 );

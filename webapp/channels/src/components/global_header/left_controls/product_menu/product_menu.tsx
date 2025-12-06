@@ -38,6 +38,7 @@ export const ProductMenuContainer = styled.nav`
     display: flex;
     align-items: center;
     cursor: pointer;
+    overflow: visible;
 
     > * + * {
         margin-left: 12px;
@@ -54,6 +55,7 @@ export const ProductMenuButton = styled.button.attrs(() => ({
     border: none;
     border-radius: 4px;
     padding: 3px 6px 3px 5px;
+    overflow: visible;
 
     &:hover, &:focus {
         color: rgba(var(--sidebar-text-rgb), 0.56);

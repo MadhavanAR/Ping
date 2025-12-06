@@ -28,7 +28,8 @@ export function useExternalLink(href: string, location: string = '', overwriteQu
     const isCloud = useSelector((state: GlobalState) => getLicense(state)?.Cloud === 'true');
 
     return useMemo(() => {
-        if (!href?.includes('mattermost.com') || href?.startsWith('mailto:')) {
+        // Block redirects to mattermost.com - return original href without modification
+        if (href?.includes('mattermost.com') || href?.startsWith('mailto:')) {
             return [href, {}];
         }
 
@@ -52,7 +53,7 @@ export function useExternalLink(href: string, location: string = '', overwriteQu
         const existingURLSearchParams = parsedUrl.searchParams;
         const existingQueryParamsObj = Object.fromEntries(existingURLSearchParams.entries());
         const queryParams = {
-            utm_source: 'mattermost',
+            utm_source: 'ping',
             utm_medium: utmMedium,
             utm_content: location,
             uid: userId,

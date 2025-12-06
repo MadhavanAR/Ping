@@ -14,6 +14,8 @@ import {LicenseSkus} from 'utils/constants';
 const ProductBrandingFreeEditionContainer = styled.span`
     display: flex;
     align-items: center;
+    overflow: visible;
+    flex-shrink: 0;
 
     > * + * {
         margin-left: 10px;

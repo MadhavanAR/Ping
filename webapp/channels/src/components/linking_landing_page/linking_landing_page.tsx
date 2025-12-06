@@ -72,7 +72,7 @@ export default class LinkingLandingPage extends PureComponent<Props, State> {
         super(props);
 
         const finalLocation = safeRedirect(window.location.href);
-        const nativeLocation = finalLocation.replace(/^(https|http)/, 'mattermost');
+        const nativeLocation = finalLocation.replace(/^(https|http)/, 'ping');
 
         this.state = {
             rememberChecked: false,

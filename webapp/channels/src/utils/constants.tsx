@@ -1181,7 +1181,7 @@ export const LicenseLinks = {
     UNSUPPORTED_UPGRADE_LINK: 'https://docs.mattermost.com/administration-guide/upgrade/enterprise-install-upgrade.html#upgrading-to-enterprise-edition-from-mattermost-team-edition',
 };
 
-export const MattermostLink = 'https://mattermost.com/';
+export const MattermostLink = '#';
 
 export const BillingSchemes = {
     FLAT_FEE: 'flat_fee',

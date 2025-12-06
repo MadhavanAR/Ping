@@ -15,6 +15,7 @@ const LeftControlsContainer = styled.div`
     height: 40px;
     flex-shrink: 0;
     flex-basis: 30%;
+    overflow: visible;
 
     > * + * {
         margin-left: 12px;
