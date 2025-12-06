@@ -1,11 +1,11 @@
-name: Build & Push Ping Image
+name: Build & Deploy Ping
 
 on:
   push:
     branches: [ main ]
 
 jobs:
-  build-and-push:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -25,3 +25,14 @@ jobs:
           file: ./Dockerfile.ping
           push: true
           tags: madhavanar/ping-app:latest
+
+      - name: Deploy to Civo server
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: 212.2.254.40
+          username: ubuntu
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /opt/ping
+            docker compose pull
+            docker compose up -d
