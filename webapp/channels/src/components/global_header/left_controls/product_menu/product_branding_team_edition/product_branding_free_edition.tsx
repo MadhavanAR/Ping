@@ -16,29 +16,28 @@ const ProductBrandingFreeEditionContainer = styled.span`
     align-items: center;
 
     > * + * {
-        margin-left: 8px;
+        margin-left: 10px;
     }
 `;
 
 const StyledLogo = styled(Logo)`
-    path {
-        fill: rgba(var(--sidebar-text-rgb), 0.75);
-    }
+    opacity: 0.9;
 `;
 
 const Badge = styled.span`
     display: flex;
     align-self: center;
-    padding: 2px 6px;
+    padding: 4px 8px;
     border-radius: var(--radius-s);
-    margin-left: 12px;
-    background: rgba(var(--sidebar-text-rgb), 0.08);
-    color: rgba(var(--sidebar-text-rgb), 0.75);
+    margin-left: 10px;
+    background: rgba(var(--sidebar-text-rgb), 0.12);
+    color: rgba(var(--sidebar-text-rgb), 0.9);
     font-family: 'Open Sans', sans-serif;
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.025em;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
     line-height: 16px;
+    text-transform: uppercase;
 `;
 
 const ProductBrandingFreeEdition = (): JSX.Element => {
@@ -54,8 +53,8 @@ const ProductBrandingFreeEdition = (): JSX.Element => {
     return (
         <ProductBrandingFreeEditionContainer tabIndex={-1}>
             <StyledLogo
-                width={116}
-                height={20}
+                width={140}
+                height={28}
             />
             <Badge>{badgeText}</Badge>
         </ProductBrandingFreeEditionContainer>

@@ -172,16 +172,12 @@ var config = {
             patterns: [
                 {from: 'src/images/emoji', to: 'emoji'},
                 {from: 'src/images/img_trans.gif', to: 'images'},
-                {from: 'src/images/logo-email.png', to: 'images'},
+                {from: 'src/images/ping-logo.png', to: 'images'},
                 {from: 'src/images/favicon', to: 'images/favicon'},
                 {from: 'src/images/appIcons.png', to: 'images'},
-                {from: 'src/images/logo-email.png', to: 'images'},
                 {from: 'src/images/browser-icons', to: 'images/browser-icons'},
                 {from: 'src/images/cloud', to: 'images'},
                 {from: 'src/images/welcome_illustration_new.png', to: 'images'},
-                {from: 'src/images/logo_email_blue.png', to: 'images'},
-                {from: 'src/images/logo_email_dark.png', to: 'images'},
-                {from: 'src/images/logo_email_gray.png', to: 'images'},
                 {from: 'src/images/forgot_password_illustration.png', to: 'images'},
                 {from: 'src/images/invite_illustration.png', to: 'images'},
                 {from: 'src/images/channel_icon.png', to: 'images'},
@@ -203,10 +199,10 @@ var config = {
         // Generate manifest.json, honouring any configured publicPath. This also handles injecting
         // <link rel="apple-touch-icon" ... /> and <meta name="apple-*" ... /> tags into root.html.
         new WebpackPwaManifest({
-            name: 'Mattermost',
-            short_name: 'Mattermost',
+            name: 'Ping',
+            short_name: 'Ping',
             start_url: '..',
-            description: 'Mattermost is an open source, self-hosted Slack-alternative',
+            description: 'Ping is an open source, self-hosted Slack-alternative',
             background_color: '#ffffff',
             inject: true,
             ios: true,

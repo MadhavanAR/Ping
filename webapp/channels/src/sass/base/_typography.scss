@@ -28,16 +28,19 @@ a {
     }
 }
 
+// Import Montserrat from Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+
 body {
     @include mixins.font-smoothing;
 
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Montserrat', 'Open Sans', sans-serif;
 }
 
 h1,
 h2,
 h3 {
-    font-family: Metropolis, sans-serif;
+    font-family: 'Montserrat', Metropolis, sans-serif;
 }
 
 h1 {
@@ -222,7 +225,7 @@ ol {
     h1,
     h2,
     h3 {
-        font-family: Metropolis, sans-serif;
+        font-family: 'Montserrat', Metropolis, sans-serif;
     }
 }
 

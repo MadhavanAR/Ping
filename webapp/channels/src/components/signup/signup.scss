@@ -3,10 +3,30 @@
 
 @use 'utils/mixins';
 
+// Minimal Gradient Theme Colors
+$gradient-primary: #6366f1;
+$gradient-secondary: #8b5cf6;
+$gradient-start: #f8fafc;
+$gradient-end: #e0e7ff;
+
 .signup-body {
+    position: relative;
     display: flex;
     flex-direction: column;
     margin: auto;
+    min-height: 100vh;
+    
+    // Clean static gradient background
+    &::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background: linear-gradient(135deg, $gradient-start 0%, $gradient-end 100%);
+    }
 
     .signup-body-action {
         display: flex;
@@ -36,17 +56,21 @@
             justify-content: center;
 
             .signup-body-no-login-title {
-                color: var(--title-color-indigo-500);
-                font-family: Metropolis;
+                background: linear-gradient(135deg, #1e325c 0%, #6366f1 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                font-family: 'Montserrat', sans-serif;
                 font-size: 40px;
-                font-weight: 600;
+                font-weight: 700;
                 letter-spacing: -0.02em;
                 line-height: 48px;
                 text-align: center;
             }
 
             .signup-body-no-login-subtitle {
-                color: rgba(var(--center-channel-color-rgb), 0.75);
+                color: rgba(30, 50, 92, 0.7);
+                font-family: 'Montserrat', sans-serif;
                 font-size: 18px;
                 font-weight: 400;
                 line-height: 28px;
@@ -56,7 +80,8 @@
 
         .signup-body-message-subtitle {
             padding-right: 170px;
-            color: rgba(var(--center-channel-color-rgb), 0.75);
+            color: rgba(30, 50, 92, 0.7);
+            font-family: 'Montserrat', sans-serif;
             font-size: 18px;
             font-weight: 400;
             line-height: 28px;
@@ -70,11 +95,14 @@
 
             .signup-body-message-title {
                 padding-right: 60px;
-                color: var(--title-color-indigo-500);
-                font-family: Metropolis;
+                background: linear-gradient(135deg, #1e325c 0%, #6366f1 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                font-family: 'Montserrat', sans-serif;
                 font-size: 80px;
-                font-weight: 600;
-                letter-spacing: -0.01em;
+                font-weight: 700;
+                letter-spacing: -0.02em;
                 line-height: 88px;
             }
 
@@ -123,11 +151,16 @@
         .signup-body-card {
             width: 540px;
             box-sizing: border-box;
-            border: 1px solid rgba(var(--center-channel-color-rgb), 0.08);
-            border-radius: 8px;
+            border: 1px solid rgba(99, 102, 241, 0.1);
+            border-radius: 16px;
             margin-left: 60px;
-            background-color: var(--center-channel-bg);
-            box-shadow: var(--elevation-5);
+            background: #ffffff;
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.08);
+            transition: box-shadow 0.2s ease;
+            
+            &:hover {
+                box-shadow: 0 8px 30px rgba(99, 102, 241, 0.12);
+            }
 
             &.with-error {
                 @include mixins.shake-horizontally;
@@ -143,12 +176,13 @@
 
                 .signup-body-card-title {
                     margin: 0;
-                    color: var(--center-channel-color);
-                    font-family: 'Metropolis';
-                    font-size: 22px;
+                    color: #1e325c;
+                    font-family: 'Montserrat', sans-serif;
+                    font-size: 24px;
                     font-style: normal;
                     font-weight: 600;
-                    line-height: 28px;
+                    line-height: 32px;
+                    margin-bottom: 8px;
                 }
 
                 .signup-body-custom-branding-markdown,
@@ -187,7 +221,18 @@
                         @include mixins.primary-button;
                         @include mixins.button-large;
 
-                        width: 100%;                    
+                        width: 100%;
+                        background: linear-gradient(135deg, $gradient-primary 0%, $gradient-secondary 100%);
+                        border: none;
+                        border-radius: 8px;
+                        font-family: 'Montserrat', sans-serif;
+                        font-weight: 600;
+                        box-shadow: 0 2px 8px rgba(99, 102, 241, 0.2);
+                        transition: box-shadow 0.2s ease;
+                        
+                        &:hover {
+                            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+                        }
                     }
                 }
 
@@ -196,14 +241,16 @@
                     height: 1px;
                     justify-content: center;
                     margin: 40px 0;
-                    background: rgba(var(--center-channel-color-rgb), 0.08);
+                    background: rgba(99, 102, 241, 0.1);
                     text-align: center;
 
                     .signup-body-card-form-divider-label {
-                        padding: 0 10px;
-                        background-color: var(--center-channel-bg);
-                        color: rgba(var(--center-channel-color-rgb), 0.75);
+                        padding: 0 15px;
+                        background-color: #ffffff;
+                        color: rgba(30, 50, 92, 0.6);
+                        font-family: 'Montserrat', sans-serif;
                         font-size: 12px;
+                        font-weight: 500;
                         line-height: 0;
                     }
                 }
@@ -258,7 +305,8 @@
             p {
                 width: 100%;
                 margin: 0;
-                color: rgba(var(--center-channel-color-rgb), 0.75);
+                color: rgba(30, 50, 92, 0.7);
+                font-family: 'Montserrat', sans-serif;
                 font-size: 18px;
                 font-weight: 400;
                 line-height: 28px;
