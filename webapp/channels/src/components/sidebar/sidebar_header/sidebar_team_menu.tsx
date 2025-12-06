@@ -75,7 +75,7 @@ export default function SidebarTeamMenu(props: Props) {
                 class: 'btn btn-sm btn-quaternary btn-inverted',
                 children: (
                     <>
-                        <span>{props.currentTeam.display_name}</span>
+                        <span>Ping</span>
                         <i className='icon icon-chevron-down'/>
                     </>
                 ),

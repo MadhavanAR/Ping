@@ -978,7 +978,7 @@ defineMessages({
     },
     socketError: {
         id: 'channel_loader.socketError',
-        defaultMessage: 'Please check connection, Mattermost unreachable. If issue persists, ask administrator to [check WebSocket port](!https://docs.mattermost.com/install/troubleshooting.html#please-check-connection-mattermost-unreachable-if-issue-persists-ask-administrator-to-check-websocket-port).',
+        defaultMessage: 'Please check connection, Ping unreachable. If issue persists, ask administrator to [check WebSocket port](!https://docs.ping.com/install/troubleshooting.html#please-check-connection-ping-unreachable-if-issue-persists-ask-administrator-to-check-websocket-port).',
     },
     trialLicenseExpiring: {
         id: 'announcement_bar.error.trial_license_expiring',
@@ -1614,10 +1614,10 @@ export const Constants = {
     POST_MODAL_PADDING: 170,
     SCROLL_DELAY: 2000,
     SCROLL_PAGE_FRACTION: 3,
-    DEFAULT_CHANNEL: 'town-square',
-    DEFAULT_CHANNEL_UI_NAME: 'Town Square',
-    OFFTOPIC_CHANNEL: 'off-topic',
-    OFFTOPIC_CHANNEL_UI_NAME: 'Off-Topic',
+    DEFAULT_CHANNEL: 'general',
+    DEFAULT_CHANNEL_UI_NAME: 'General',
+    OFFTOPIC_CHANNEL: 'watercooler',
+    OFFTOPIC_CHANNEL_UI_NAME: 'Watercooler',
     GITLAB_SERVICE: 'gitlab',
     GOOGLE_SERVICE: 'google',
     OFFICE365_SERVICE: 'office365',

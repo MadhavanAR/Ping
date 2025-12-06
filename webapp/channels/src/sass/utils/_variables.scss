@@ -1,8 +1,11 @@
 @use 'sass:color';
+@use '../../styles/ping-theme' as theme;
 
 // Color Variables
-$primary-color: #166de0;
-$primary-color--hover: color.adjust($primary-color, $lightness: -10%);
+// Ping theme variables are imported from ping-theme.scss
+// Override primary color with Ping theme
+$primary-color: theme.$primary-color;
+$primary-color--hover: theme.$primary-color--hover;
 $bg--gray: rgb(245, 245, 245);
 $white: rgb(255, 255, 255);
 $black: rgb(0, 0, 0);

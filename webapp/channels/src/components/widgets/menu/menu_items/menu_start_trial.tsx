@@ -46,54 +46,8 @@ const MenuStartTrial = (props: Props): JSX.Element | null => {
         return null;
     }
 
-    // Determine badge text and description based on license type
-    const isEntryLicense = isCurrentLicensed === 'true' && skuShortName === LicenseSkus.Entry;
-    const badgeText = isEntryLicense ? 'ENTRY EDITION' : 'TEAM EDITION';
-
-    return (
-        <li
-            className={'MenuStartTrial'}
-            role='menuitem'
-            id={props.id}
-        >
-            <FreeVersionBadge>{badgeText}</FreeVersionBadge>
-            <div className='editionText'>
-                {isEntryLicense ? (
-                    formatMessage({
-                        id: 'navbar_dropdown.entryVersionText',
-                        defaultMessage: 'Entry offers Enterprise Advance capabilities <link>with limits</link> designed to support evaluation.',
-                    },
-                    {
-                        link: (msg: React.ReactNode) => (
-                            <ExternalLink
-                                location='menu_start_trial.entry-link'
-                                href={LicenseLinks.ENTRY_LIMITS_INFO}
-                            >
-                                {msg}
-                            </ExternalLink>
-                        ),
-                    })
-                ) : (
-                    formatMessage(
-                        {
-                            id: 'navbar_dropdown.versionText',
-                            defaultMessage: 'This is the free <link>unsupported</link> edition of Mattermost.',
-                        },
-                        {
-                            link: (msg: React.ReactNode) => (
-                                <ExternalLink
-                                    location='menu_start_trial.unsupported-link'
-                                    href={LicenseLinks.UNSUPPORTED}
-                                >
-                                    {msg}
-                                </ExternalLink>
-                            ),
-                        },
-                    )
-                )}
-            </div>
-        </li>
-    );
+    // Return null - no trial/edition badges shown
+    return null;
 };
 
 export default MenuStartTrial;

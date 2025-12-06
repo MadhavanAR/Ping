@@ -6058,7 +6058,7 @@ const AdminDefinition: AdminDefinitionType = {
                             type: 'bool',
                             key: 'ServiceSettings.EnableTutorial',
                             label: defineMessage({id: 'admin.experimental.enableTutorial.title', defaultMessage: 'Enable Tutorial:'}),
-                            help_text: defineMessage({id: 'admin.experimental.enableTutorial.desc', defaultMessage: 'When true, users are prompted with a tutorial when they open Mattermost for the first time after account creation. When false, the tutorial is disabled, and users are placed in Town Square when they open Mattermost for the first time after account creation.'}),
+                            help_text: defineMessage({id: 'admin.experimental.enableTutorial.desc', defaultMessage: 'When true, users are prompted with a tutorial when they open Ping for the first time after account creation. When false, the tutorial is disabled, and users are placed in General when they open Ping for the first time after account creation.'}),
                             help_text_markdown: false,
                             isDisabled: it.not(it.userHasWritePermissionOnResource(RESOURCE_KEYS.EXPERIMENTAL.FEATURES)),
                         },

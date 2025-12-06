@@ -28,13 +28,13 @@ a {
     }
 }
 
-// Import Montserrat from Google Fonts
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+// Import Montserrat and Inter from Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
 
 body {
     @include mixins.font-smoothing;
 
-    font-family: 'Montserrat', 'Open Sans', sans-serif;
+    font-family: 'Inter', 'Open Sans', sans-serif;
 }
 
 h1,
@@ -222,6 +222,8 @@ ol {
 }
 
 .app__body {
+    font-family: 'Inter', 'Open Sans', sans-serif;
+    
     h1,
     h2,
     h3 {

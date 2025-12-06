@@ -506,7 +506,7 @@ function createDefaultIntroMessage(
                 {isReadOnly &&
                     <FormattedMessage
                         id='intro_messages.readonly.default'
-                        defaultMessage='Welcome to {display_name}. Messages can only be posted by admins. Everyone automatically becomes a permanent member of this channel when they join the team.'
+                        defaultMessage='Welcome to {display_name}! This is a read-only channel. Only admins can post messages here. Everyone automatically joins this channel.'
                         values={{
                             display_name: channel.display_name,
                         }}

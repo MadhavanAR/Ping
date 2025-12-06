@@ -1,6 +1,7 @@
 @use "utils/functions";
 @use "utils/mixins";
 @use "utils/variables";
+@use "../../styles/ping-theme" as theme;
 
 .channel-header {
     position: relative;
@@ -12,6 +13,64 @@
     border-bottom: var(--border-default);
     background: functions.v(center-channel-bg);
     font-size: 14px;
+
+    &.ping-channel-header {
+        max-height: 48px;
+        padding: 0 16px;
+        border-radius: 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        background: theme.$bg-white;
+        box-shadow: none;
+
+        .ping-channel-header__container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 48px;
+            gap: 16px;
+        }
+
+        .ping-channel-header__left {
+            display: flex;
+            align-items: center;
+            flex: 1;
+            min-width: 0;
+            gap: 8px;
+        }
+
+        .ping-channel-header__right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ping-channel-header__actions {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-left: 8px;
+        }
+
+        .ping-channel-header__search {
+            display: flex;
+            align-items: center;
+            min-width: 240px;
+            max-width: 400px;
+            flex: 0 1 auto;
+
+            .NewSearchContainer {
+                width: 100%;
+            }
+        }
+
+        .channel-header__info {
+            display: none;
+        }
+
+        .channel-header__description {
+            display: none;
+        }
+    }
 
     #channelHeaderDropdownButton {
         display: flex;
@@ -91,10 +150,36 @@
     .channel-header__mute {
         position: relative;
         z-index: 1;
+        min-width: 28px;
+        height: 28px;
+        border-radius: 6px;
+        transition: all 0.15s ease;
 
         &.active {
             i {
                 opacity: 1;
+            }
+        }
+
+        &.inactive {
+            color: rgba(0, 0, 0, 0.6);
+            
+            &:hover {
+                background: rgba(0, 0, 0, 0.06);
+                color: rgba(0, 0, 0, 0.8);
+            }
+        }
+    }
+
+    &.ping-channel-header {
+        .channel-header__mute {
+            &.inactive {
+                color: rgba(0, 0, 0, 0.6);
+                
+                &:hover {
+                    background: rgba(0, 0, 0, 0.06);
+                    color: rgba(0, 0, 0, 0.8);
+                }
             }
         }
     }
@@ -219,20 +304,29 @@
         white-space: nowrap;
     }
 
+    &.ping-channel-header {
+        .heading {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            color: rgba(0, 0, 0, 0.9);
+        }
+    }
+
     .caret {
         margin-top: 3px;
     }
 
     .more {
         display: inline-block;
-        color: #81848b;
+        color: theme.$text-tertiary;
         font-size: 13px;
         text-transform: capitalize;
         vertical-align: top;
     }
 
     .disabled {
-        color: #999;
+        color: theme.$text-tertiary;
     }
 
     .shared-channel-icon {
@@ -291,6 +385,14 @@
     .MenuWrapper {
         min-width: 0;
         flex: 0 auto;
+    }
+}
+
+.ping-channel-header {
+    .channel-header__top,
+    .channel-header__bot {
+        max-width: 100%;
+        gap: 8px;
     }
 }
 

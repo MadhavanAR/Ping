@@ -220,6 +220,11 @@ export default class SidebarRight extends React.PureComponent<Props, State> {
             this.props.actions.setRhsExpanded(false);
         }
 
+        // Ensure sidebar defaults to collapsed when first opened
+        if (!prevProps.isOpen && this.props.isOpen && this.props.isExpanded) {
+            this.props.actions.setRhsExpanded(false);
+        }
+
         // close when changing products or teams
         if (
             (prevProps.teamId && this.props.teamId !== prevProps.teamId) ||

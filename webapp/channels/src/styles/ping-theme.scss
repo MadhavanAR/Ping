@@ -1,0 +1,43 @@
+// Copyright (c) 2015-present Mattermost, Inc. All Rights Reserved.
+// See LICENSE.txt for license information.
+
+// Ping Theme Variables
+// Central theme system for consistent UI styling across Ping
+
+// Primary Colors
+$primary-color: #6B4EFF;
+$primary-color--hover: darken($primary-color, 10%);
+$primary-color--light: lighten($primary-color, 20%);
+
+// Sidebar Colors
+$sidebar-bg: #11121A;
+$sidebar-text: #C6C8D1;
+$sidebar-text-hover: #FFFFFF;
+$sidebar-hover-bg: rgba(255, 255, 255, 0.08);
+$sidebar-active-bg: rgba(255, 255, 255, 0.12);
+
+// Background Colors
+$bg-light: #F7F8FA;
+$bg-white: #FFFFFF;
+
+// Border Radius
+$radius-card: 12px;
+$radius-input: 8px;
+$radius-button: 6px;
+
+// Shadows
+$shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+$shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+$shadow-md: 0 2px 8px rgba(0, 0, 0, 0.1);
+$shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.12);
+
+// Text Colors
+$text-primary: rgba(var(--center-channel-color-rgb), 1);
+$text-secondary: rgba(var(--center-channel-color-rgb), 0.75);
+$text-tertiary: rgba(var(--center-channel-color-rgb), 0.5);
+
+// Background Overlays
+$bg-overlay-light: rgba(var(--center-channel-color-rgb), 0.03);
+$bg-overlay-medium: rgba(var(--center-channel-color-rgb), 0.08);
+$bg-overlay-dark: rgba(var(--center-channel-color-rgb), 0.12);
+

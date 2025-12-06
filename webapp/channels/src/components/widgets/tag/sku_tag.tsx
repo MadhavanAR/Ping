@@ -23,24 +23,24 @@ const SkuTag = ({className = '', size = 'xs', sku}: Props) => {
         case LicenseSkus.Professional:
             return 'PROFESSIONAL';
         case LicenseSkus.Enterprise:
-            return 'ENTERPRISE';
+            return 'PING';
         case LicenseSkus.E10:
-            return 'ENTERPRISE E10';
+            return 'PING';
         case LicenseSkus.E20:
-            return 'ENTERPRISE E20';
+            return 'PING';
         case LicenseSkus.EnterpriseAdvanced:
-            return 'ENTERPRISE ADVANCED';
+            return 'PING';
         case LicenseSkus.Entry:
-            return 'ENTRY';
+            return 'PING';
         default:
-            return 'UNKNOWN';
+            return 'PING';
         }
     }, [sku]);
 
     return (
         <Tag
             className={classNames('SkuTag', className)}
-            icon='mattermost'
+            icon='ping'
             size={size}
             text={namedSku}
         />

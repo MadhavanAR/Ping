@@ -102,7 +102,7 @@ export default function AboutBuildModal(props: Props) {
         <div>
             <FormattedMessage
                 id='about.teamEditionLearn'
-                defaultMessage='Join the Mattermost community at '
+                defaultMessage='Join the Ping community at '
             />
             <ExternalLink
                 location='about_build_modal'
@@ -137,7 +137,7 @@ export default function AboutBuildModal(props: Props) {
                 <div>
                     <FormattedMessage
                         id='about.enterpriseEditionLearn'
-                        defaultMessage='Learn more about Mattermost {planName} at '
+                        defaultMessage='Learn more about Ping {planName} at '
                         values={{planName: skuName}}
                     />
                     <ExternalLink

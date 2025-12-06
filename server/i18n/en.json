@@ -360,12 +360,12 @@
     "translation": "Missing team_id in request body"
   },
   {
-    "id": "api.channel.create_default_channels.off_topic",
-    "translation": "Off-Topic"
+    "id": "api.channel.create_default_channels.watercooler",
+    "translation": "Watercooler"
   },
   {
-    "id": "api.channel.create_default_channels.town_square",
-    "translation": "Town Square"
+    "id": "api.channel.create_default_channels.general",
+    "translation": "General"
   },
   {
     "id": "api.channel.create_direct_channel.invalid_user.app_error",
@@ -1060,7 +1060,7 @@
   },
   {
     "id": "api.command_help.success",
-    "translation": "Mattermost is an open source platform for secure communication, collaboration, and orchestration of work across tools and teams.\r\nMattermost contains two key tools:\r\n\r\n**Channels** - Stay connected with your team via 1:1 and group messaging.\r\n**[Playbooks](/playbooks)** - Build and configure repeatable processes to achieve specific and predictable outcomes.\r\n\r\n[View documentation and guides]({{.HelpLink}})"
+    "translation": "Ping is an open source platform for secure communication, collaboration, and orchestration of work across tools and teams.\r\n\r\n**Channels** - Stay connected with your team via 1:1 and group messaging.\r\n\r\n[View documentation and guides]({{.HelpLink}})"
   },
   {
     "id": "api.command_invite.channel.app_error",
@@ -3972,7 +3972,7 @@
   },
   {
     "id": "api.templates.welcome_body.info",
-    "translation": "This email address was used to create an account with Mattermost."
+    "translation": "This email address was used to create an account with Ping."
   },
   {
     "id": "api.templates.welcome_body.info1",

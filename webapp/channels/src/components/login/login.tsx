@@ -59,6 +59,8 @@ import type {GlobalState} from 'types/store';
 import GuestMagicLinkCard from './guest_magic_link_card';
 import LoginMfa from './login_mfa';
 
+import PingLogoImage from 'images/ping-logo.png';
+
 import './login.scss';
 
 const MOBILE_SCREEN_WIDTH = 1200;
@@ -936,132 +938,132 @@ const Login = ({onCustomizeHeader}: LoginProps) => {
         }
 
         return (
-            <>
-                <div
-                    className={classNames(
-                        'login-body-message',
-                        {
-                            'custom-branding': enableCustomBrand,
-                            'with-brand-image': enableCustomBrand && !brandImageError,
-                            'with-alternate-link': showSignup && !isMobileView,
-                        },
-                    )}
-                >
-                    {enableCustomBrand && !brandImageError ? (
+            <div className='login-body-centered'>
+                <div className={classNames('login-body-card', {'with-error': hasError})}>
+                    {/* Ping Logo */}
+                    <div className='login-body-logo'>
                         <img
-                            className={classNames('login-body-custom-branding-image')}
-                            alt='brand'
-                            src={Client4.getBrandImageUrl('0')}
-                            onError={handleBrandImageError}
+                            src={PingLogoImage}
+                            alt='Ping'
+                            className='login-logo-image'
                         />
-                    ) : (
-                        <h1 className='login-body-message-title'>
-                            {formatMessage({id: 'login.title', defaultMessage: 'Log in to your account'})}
-                        </h1>
-                    )}
-                    {getMessageSubtitle()}
-                </div>
-                <div className='login-body-action'>
-                    {!isMobileView && getAlternateLink()}
-                    <div className={classNames('login-body-card', {'custom-branding': enableCustomBrand, 'with-error': hasError})}>
-                        <div
-                            className='login-body-card-content'
-                        >
-                            {magicLinkSuccessful ? (
-                                <GuestMagicLinkCard/>
-                            ) : (
-                                <>
-                                    <p className='login-body-card-title'>
-                                        {getCardTitle()}
-                                    </p>
-                                    {enableCustomBrand && getMessageSubtitle()}
-                                    {alertBanner && (
-                                        <AlertBanner
-                                            id='login-body-card-banner'
-                                            className='login-body-card-banner'
-                                            mode={alertBanner.mode}
-                                            title={alertBanner.title}
-                                            onDismiss={alertBanner.onDismiss ?? dismissAlert}
-                                        />
-                                    )}
-                                    {enableBaseLogin && (
-                                        <form
-                                            onSubmit={(event: FormEvent<HTMLFormElement>) => {
-                                                preSubmit(event as unknown as React.MouseEvent);
-                                            }}
-                                        >
-                                            <div className='login-body-card-form'>
-                                                <Input
-                                                    data-testid='login-id-input'
-                                                    ref={loginIdInput}
-                                                    name='loginId'
-                                                    containerClassName='login-body-card-form-input'
-                                                    type='text'
-                                                    inputSize={SIZE.LARGE}
-                                                    value={loginId}
-                                                    onChange={handleInputOnChange}
-                                                    hasError={hasError}
-                                                    placeholder={getInputPlaceholder()}
-                                                    disabled={isWaiting}
-                                                    autoFocus={true}
-                                                    aria-describedby={alertBanner ? 'login-body-card-banner' : undefined}
-                                                />
-                                                {(!enableGuestMagicLink || requiresPassword) && (
-                                                    <>
-                                                        <PasswordInput
-                                                            ref={passwordInput}
-                                                            className='login-body-card-form-password-input'
-                                                            value={password}
-                                                            inputSize={SIZE.LARGE}
-                                                            onChange={handlePasswordInputOnChange}
-                                                            hasError={hasError}
-                                                            disabled={isWaiting}
-                                                        />
-                                                        {getResetPasswordLink()}
-                                                    </>
-                                                )}
-                                                <SaveButton
-                                                    extraClasses='login-body-card-form-button-submit large'
-                                                    saving={isWaiting}
-                                                    onClick={preSubmit}
-                                                    defaultMessage={formatMessage({id: 'login.logIn', defaultMessage: 'Log in'})}
-                                                    savingMessage={formatMessage({id: 'login.logingIn', defaultMessage: 'Logging in…'})}
-                                                />
-                                            </div>
-                                        </form>
-                                    )}
-                                    {enableBaseLogin && enableExternalSignup && (
+                    </div>
+
+                    {/* Card Content */}
+                    <div className='login-body-card-content'>
+                        {magicLinkSuccessful ? (
+                            <GuestMagicLinkCard/>
+                        ) : (
+                            <>
+                                <h1 className='login-body-card-title'>
+                                    {formatMessage({id: 'login.title', defaultMessage: 'Welcome back'})}
+                                </h1>
+                                <p className='login-body-card-subtitle'>
+                                    {formatMessage({id: 'login.subtitle', defaultMessage: 'Sign in to your Ping account'})}
+                                </p>
+                                
+                                {alertBanner && (
+                                    <AlertBanner
+                                        id='login-body-card-banner'
+                                        className='login-body-card-banner'
+                                        mode={alertBanner.mode}
+                                        title={alertBanner.title}
+                                        onDismiss={alertBanner.onDismiss ?? dismissAlert}
+                                    />
+                                )}
+                                
+                                {enableBaseLogin && (
+                                    <form
+                                        onSubmit={(event: FormEvent<HTMLFormElement>) => {
+                                            preSubmit(event as unknown as React.MouseEvent);
+                                        }}
+                                    >
+                                        <div className='login-body-card-form'>
+                                            <Input
+                                                data-testid='login-id-input'
+                                                ref={loginIdInput}
+                                                name='loginId'
+                                                containerClassName='login-body-card-form-input'
+                                                type='text'
+                                                inputSize={SIZE.LARGE}
+                                                value={loginId}
+                                                onChange={handleInputOnChange}
+                                                hasError={hasError}
+                                                placeholder={getInputPlaceholder()}
+                                                disabled={isWaiting}
+                                                autoFocus={true}
+                                                aria-describedby={alertBanner ? 'login-body-card-banner' : undefined}
+                                            />
+                                            {(!enableGuestMagicLink || requiresPassword) && (
+                                                <>
+                                                    <PasswordInput
+                                                        ref={passwordInput}
+                                                        className='login-body-card-form-password-input'
+                                                        value={password}
+                                                        inputSize={SIZE.LARGE}
+                                                        onChange={handlePasswordInputOnChange}
+                                                        hasError={hasError}
+                                                        disabled={isWaiting}
+                                                    />
+                                                    {getResetPasswordLink()}
+                                                </>
+                                            )}
+                                            <SaveButton
+                                                extraClasses='login-body-card-form-button-submit large'
+                                                saving={isWaiting}
+                                                onClick={preSubmit}
+                                                defaultMessage={formatMessage({id: 'login.logIn', defaultMessage: 'Sign in'})}
+                                                savingMessage={formatMessage({id: 'login.logingIn', defaultMessage: 'Signing in…'})}
+                                            />
+                                        </div>
+                                    </form>
+                                )}
+                                
+                                {/* Only show SSO if explicitly enabled AND user has base login */}
+                                {enableBaseLogin && enableExternalSignup && (
+                                    <>
                                         <div className='login-body-card-form-divider'>
                                             <span className='login-body-card-form-divider-label'>
-                                                {formatMessage({id: 'login.or', defaultMessage: 'or log in with'})}
+                                                {formatMessage({id: 'login.or', defaultMessage: 'or'})}
                                             </span>
                                         </div>
-                                    )}
-                                    {enableExternalSignup && (
-                                        <div className={classNames('login-body-card-form-login-options', {column: !enableBaseLogin})}>
+                                        <div className='login-body-card-form-login-options'>
                                             {getExternalLoginOptions().map((option) => (
                                                 <ExternalLoginButton
                                                     key={option.id}
-                                                    direction={enableBaseLogin ? undefined : 'column'}
+                                                    direction='column'
                                                     {...option}
                                                 />
                                             ))}
                                         </div>
-                                    )}
-                                </>
-                            )}
-                        </div>
+                                    </>
+                                )}
+                                
+                                {/* Show signup link */}
+                                {showSignup && (
+                                    <div className='login-body-card-footer'>
+                                        <span className='login-body-card-footer-text'>
+                                            {formatMessage({id: 'login.noAccount', defaultMessage: "Don't have an account?"})}
+                                        </span>
+                                        <Link
+                                            to={`/signup_user_complete${search}`}
+                                            className='login-body-card-footer-link'
+                                        >
+                                            {formatMessage({id: 'login.signUp', defaultMessage: 'Sign up'})}
+                                        </Link>
+                                    </div>
+                                )}
+                            </>
+                        )}
                     </div>
                 </div>
-            </>
+            </div>
         );
     };
 
     return (
         <div className='login-body'>
-            <div className='login-body-content'>
-                {getContent()}
-            </div>
+            {getContent()}
         </div>
     );
 };

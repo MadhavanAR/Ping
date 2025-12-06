@@ -1,8 +1,16 @@
 @use "utils/variables";
+@use "../../styles/ping-theme" as theme;
 
 /* Height durations for height and opacity of sidebar channels needs to be different for optimum fps see PR #9732 */
 $sidebarHeightTransitionDuration: 0.18s;
 $sidebarOpacityAnimationDuration: 0.15s;
+
+// Ping Modern Sidebar Colors - using theme variables
+$ping-sidebar-bg: theme.$sidebar-bg;
+$ping-sidebar-text: theme.$sidebar-text;
+$ping-sidebar-text-hover: theme.$sidebar-text-hover;
+$ping-sidebar-hover-bg: theme.$sidebar-hover-bg;
+$ping-sidebar-active-bg: theme.$sidebar-active-bg;
 
 #SidebarContainer {
     position: relative;
@@ -14,14 +22,15 @@ $sidebarOpacityAnimationDuration: 0.15s;
     height: 100%;
     min-height: 0;
     flex-direction: column;
-    background-color: var(--sidebar-bg);
+    background-color: $ping-sidebar-bg;
     overflow-x: visible;
+    font-family: 'Inter', 'Open Sans', sans-serif;
 
     @media screen and (min-width: 769px) {
         width: var(--overrideLhsWidth, 264px);
         min-width: 200px;
         max-width: 264px;
-        background: none;
+        background: $ping-sidebar-bg;
     }
 
     @media screen and (min-width: 1201px) {
@@ -92,20 +101,25 @@ $sidebarOpacityAnimationDuration: 0.15s;
     }
 
     .SidebarHeader {
+        background-color: $ping-sidebar-bg;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        
         .header__info {
-            color: var(--sidebar-header-text-color);
+            color: $ping-sidebar-text;
 
             .user__name {
-                color: rgba(var(--sidebar-header-text-color-rgb), 0.8);
+                color: rgba(198, 200, 209, 0.8);
             }
 
             .team__name,
             .user__name {
                 max-width: 130px;
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 600;
             }
 
             &:hover .user__name {
-                color: var(--sidebar-header-text-color);
+                color: $ping-sidebar-text-hover;
             }
         }
 
@@ -139,7 +153,7 @@ $sidebarOpacityAnimationDuration: 0.15s;
     }
 
     .SidebarChannelNavigator {
-        margin: 16px 14px 8px 14px;
+        margin: 12px 8px 8px 8px;
 
         &.desktop {
             display: block;
@@ -230,33 +244,49 @@ $sidebarOpacityAnimationDuration: 0.15s;
             display: flex;
             width: 100%;
             align-items: center;
-            padding: 0 5px 0 2px;
-            border-radius: 4px;
+            padding: 6px 12px;
+            border-radius: 6px;
             margin-bottom: 8px;
-            background: rgba(var(--sidebar-text-rgb), 0.08);
-            font-family: 'Open Sans', sans-serif;
-            font-size: 12px;
+            background: rgba(255, 255, 255, 0.06);
+            border: none;
+            color: $ping-sidebar-text;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 400;
             text-align: left;
+            transition: all 0.15s ease;
 
             .icon-magnify {
                 display: inline-flex;
-                margin-right: 2px;
-                font-size: 18px;
+                margin-right: 8px;
+                font-size: 16px;
+                opacity: 0.7;
             }
 
             .SidebarChannelNavigator_shortcutText {
                 display: none;
                 padding-right: 3px;
                 margin-left: auto;
+                font-size: 11px;
+                opacity: 0.6;
             }
 
             &:hover {
-                background: rgba(var(--sidebar-text-rgb), 0.16);
-                color: var(--sidebar-text);
+                background: rgba(255, 255, 255, 0.1);
+                color: $ping-sidebar-text-hover;
+
+                .icon-magnify {
+                    opacity: 1;
+                }
 
                 .SidebarChannelNavigator_shortcutText {
                     display: inherit;
                 }
+            }
+            
+            &:focus {
+                outline: none;
+                background: rgba(255, 255, 255, 0.1);
             }
 
             span {
@@ -451,14 +481,16 @@ $sidebarOpacityAnimationDuration: 0.15s;
         border: none;
         border-radius: 4px;
         background: transparent;
-        color: rgba(var(--sidebar-text-rgb), 0.64);
+        color: rgba(198, 200, 209, 0.6);
         font-size: 16px;
         line-height: 16px;
+        transition: all 0.15s ease;
 
         &:hover,
         &:active,
         &:focus {
-            color: var(--sidebar-text);
+            color: $ping-sidebar-text-hover;
+            background: rgba(255, 255, 255, 0.08);
             cursor: pointer;
         }
     }
@@ -592,17 +624,22 @@ $sidebarOpacityAnimationDuration: 0.15s;
         z-index: 1;
         top: 0;
         display: flex;
-        height: 32px;
+        height: 28px;
         align-items: center;
+        padding: 0 8px;
+        margin: 8px 0 4px;
         border: none;
-        background-color: var(--sidebar-bg);
-        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.33);
-        color: rgba(var(--sidebar-text-rgb), 0.64);
-        font-family: 'Open Sans', sans-serif;
+        background-color: transparent;
+        box-shadow: none;
+        color: rgba(198, 200, 209, 0.7);
+        font-family: 'Inter', sans-serif;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.04em;
         text-align: left;
         text-overflow: ellipsis;
         text-transform: uppercase;
-        transition: box-shadow 0.25s ease-in-out;
+        transition: color 0.15s ease;
 
         .SidebarMenu_menuButton {
             width: 28px;
@@ -704,22 +741,26 @@ $sidebarOpacityAnimationDuration: 0.15s;
         top: 0;
         display: flex;
         min-width: 0;
-        height: 32px;
+        height: 28px;
         flex: 1 1 auto;
         align-items: center;
         padding: 0;
         border: none;
         background-color: transparent;
-        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.33);
-        color: rgba(var(--sidebar-text-rgb), 0.64);
-        font-family: 'Open Sans', sans-serif;
-        font-size: 12px;
+        box-shadow: none;
+        color: rgba(198, 200, 209, 0.7);
+        font-family: 'Inter', sans-serif;
+        font-size: 11px;
         font-weight: 600;
-        letter-spacing: 0.05em;
+        letter-spacing: 0.04em;
         text-align: left;
         text-transform: uppercase;
-        transition: box-shadow 0.25s ease-in-out;
+        transition: color 0.15s ease;
         white-space: nowrap;
+        
+        &:hover {
+            color: $ping-sidebar-text;
+        }
 
         .emoji {
             color: var(--sidebar-text);
@@ -1066,15 +1107,20 @@ $sidebarOpacityAnimationDuration: 0.15s;
         position: relative;
         display: flex;
         width: 100%;
-        height: 32px;
+        height: 28px;
         align-items: center;
-        padding: 7px 16px 7px 19px;
+        padding: 4px 8px 4px 12px;
         border-top: 0;
         border-bottom: 0;
         margin-right: 0;
-        color: rgba(var(--sidebar-text-rgb), 0.64);
-        font-size: 14px;
+        margin-left: 8px;
+        border-radius: 6px;
+        color: $ping-sidebar-text;
+        font-family: 'Inter', sans-serif;
+        font-size: 15px;
+        font-weight: 400;
         text-decoration: none;
+        transition: all 0.15s ease;
 
         .emoji {
             color: var(--sidebar-text);
@@ -1102,8 +1148,9 @@ $sidebarOpacityAnimationDuration: 0.15s;
 
     .SidebarChannel .SidebarLink:hover,
     .SidebarChannel .SidebarLink.menuOpen {
-        padding-right: 5px;
-        background-color: var(--sidebar-text-hover-bg);
+        padding-right: 8px;
+        background-color: $ping-sidebar-hover-bg;
+        color: $ping-sidebar-text-hover;
 
         .DirectChannel__status-icon {
             box-shadow: inset 0 0 14px rgba(255, 255, 255, 0.12);
@@ -1128,31 +1175,33 @@ $sidebarOpacityAnimationDuration: 0.15s;
 
     .SidebarChannel > .active.SidebarLink,
     .SidebarChannel.active .SidebarLink {
-        background: rgba(var(--sidebar-text-rgb), 0.08);
+        background: $ping-sidebar-active-bg;
+        color: $ping-sidebar-text-hover;
+        font-weight: 500;
 
         .DirectChannel__profile-picture .DirectChannel__status-icon {
             box-shadow: inset 0 0 14px rgba(255, 255, 255, 0.24);
         }
 
         .SidebarChannelLinkLabel {
-            color: var(--sidebar-text);
+            color: $ping-sidebar-text-hover;
         }
 
         &.selected {
-            background: rgba(var(--sidebar-text-active-border-rgb), 0.64);
+            background: $ping-sidebar-active-bg;
 
             &:hover {
-                background: rgba(var(--sidebar-text-active-border-rgb), 0.64);
+                background: $ping-sidebar-active-bg;
             }
         }
     }
 
     .SidebarLink.selected {
-        background: rgba(var(--sidebar-text-active-border-rgb), 0.64);
-        color: rgba(var(--sidebar-text-rgb), 1);
+        background: $ping-sidebar-active-bg;
+        color: $ping-sidebar-text-hover;
 
         &:hover {
-            background: rgba(var(--sidebar-text-active-border-rgb), 0.64);
+            background: $ping-sidebar-active-bg;
         }
     }
 
@@ -1160,22 +1209,22 @@ $sidebarOpacityAnimationDuration: 0.15s;
     .SidebarChannel.active .SidebarLink::before {
         position: absolute;
         top: 0;
-        left: -2px;
-        width: 4px;
-        height: 100%;
-        border-radius: 4px;
-        background: var(--sidebar-text-active-border);
+        left: 0;
+        width: 3px;
+        height: 20px;
+        border-radius: 0 3px 3px 0;
+        background: #6B4EFF;
         content: '';
     }
 
     .SidebarChannel.unread .SidebarChannelLinkLabel,
     .SidebarChannel.unread .SidebarLink:hover .SidebarChannelLinkLabel {
-        color: var(--sidebar-unread-text);
+        color: $ping-sidebar-text-hover;
         font-weight: 600;
     }
 
     .SidebarChannel.unread .SidebarLink > i {
-        color: var(--sidebar-unread-text);
+        color: $ping-sidebar-text-hover;
     }
 
     .SidebarChannel .SidebarLink > i {
@@ -1206,7 +1255,7 @@ $sidebarOpacityAnimationDuration: 0.15s;
             align-items: center;
             justify-content: center;
             border-radius: 100%;
-            background: var(--sidebar-bg);
+            background: $ping-sidebar-bg;
             font-size: 12px;
         }
     }

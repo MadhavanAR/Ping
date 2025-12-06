@@ -55,6 +55,8 @@ import {isValidUsername} from 'utils/utils';
 
 import type {GlobalState} from 'types/store';
 
+import PingLogoImage from 'images/ping-logo.png';
+
 import './signup.scss';
 
 const MOBILE_SCREEN_WIDTH = 1200;
@@ -415,7 +417,7 @@ const Signup = ({onCustomizeHeader}: SignupProps) => {
             <p className='signup-body-message-subtitle'>
                 {formatMessage({
                     id: 'signup_user_completed.subtitle',
-                    defaultMessage: 'Create your Mattermost account to start collaborating with your team',
+                    defaultMessage: 'Create your Ping account to start collaborating with your team',
                 })}
             </p>
         );
@@ -615,7 +617,7 @@ const Signup = ({onCustomizeHeader}: SignupProps) => {
                     onChange={() => setSubscribeToSecurityNewsletter(!subscribeToSecurityNewsletter)}
                     text={
                         formatMessage(
-                            {id: 'newsletter_optin.checkmark.text', defaultMessage: '<span>I would like to receive Mattermost security updates via newsletter.</span> By subscribing, I consent to receive emails from Mattermost with product updates, promotions, and company news. I have read the <a>Privacy Policy</a> and understand that I can <aa>unsubscribe</aa> at any time'},
+                            {id: 'newsletter_optin.checkmark.text', defaultMessage: '<span>I would like to receive Ping security updates via newsletter.</span> By subscribing, I consent to receive emails from Ping with product updates, promotions, and company news. I have read the <a>Privacy Policy</a> and understand that I can <aa>unsubscribe</aa> at any time'},
                             {
                                 a: (chunks: React.ReactNode | React.ReactNodeArray) => (
                                     <ExternalLink
@@ -645,7 +647,7 @@ const Signup = ({onCustomizeHeader}: SignupProps) => {
         return (
             <div className='newsletter'>
                 <span className='interested'>
-                    {formatMessage({id: 'newsletter_optin.title', defaultMessage: 'Interested in receiving Mattermost security, product, promotions, and company updates updates via newsletter?'})}
+                    {formatMessage({id: 'newsletter_optin.title', defaultMessage: 'Interested in receiving Ping security, product, promotions, and company updates updates via newsletter?'})}
                 </span>
                 <span className='link'>
                     {formatMessage(
@@ -734,170 +736,171 @@ const Signup = ({onCustomizeHeader}: SignupProps) => {
         }
 
         return (
-            <>
-                <div
-                    className={classNames(
-                        'signup-body-message',
-                        {
-                            'custom-branding': enableCustomBrand,
-                            'with-brand-image': enableCustomBrand && !brandImageError,
-                            'with-alternate-link': !isMobileView,
-                        },
-                    )}
-                >
-                    {enableCustomBrand && !brandImageError ? (
+            <div className='signup-body-centered'>
+                <div className={classNames('signup-body-card', {'with-error': hasError})}>
+                    {/* Ping Logo */}
+                    <div className='signup-body-logo'>
                         <img
-                            className={classNames('signup-body-custom-branding-image')}
-                            alt='brand image'
-                            src={Client4.getBrandImageUrl('0')}
-                            onError={handleBrandImageError}
+                            src={PingLogoImage}
+                            alt='Ping'
+                            className='signup-logo-image'
                         />
-                    ) : (
-                        <h1 className='signup-body-message-title'>
-                            {formatMessage({id: 'signup_user_completed.title', defaultMessage: 'Let’s get started'})}
+                    </div>
+
+                    {/* Card Content */}
+                    <div className='signup-body-card-content'>
+                        <h1 className='signup-body-card-title'>
+                            {formatMessage({id: 'signup_user_completed.title', defaultMessage: 'Create your account'})}
                         </h1>
-                    )}
-                    {getMessageSubtitle()}
-                </div>
-                <div className='signup-body-action'>
-                    {!isMobileView && getAlternateLink()}
-                    <div className={classNames('signup-body-card', {'custom-branding': enableCustomBrand, 'with-error': hasError})}>
-                        <div
-                            className='signup-body-card-content'
-                        >
-                            <h2 className='signup-body-card-title'>
-                                {getCardTitle()}
-                            </h2>
-                            {enableCustomBrand && getMessageSubtitle()}
-                            {alertBanner && (
-                                <AlertBanner
-                                    className='login-body-card-banner'
-                                    mode={alertBanner.mode}
-                                    title={alertBanner.title}
-                                    onDismiss={alertBanner.onDismiss}
+                        <p className='signup-body-card-subtitle'>
+                            {formatMessage({
+                                id: 'signup_user_completed.subtitle',
+                                defaultMessage: 'Get started with Ping',
+                            })}
+                        </p>
+                        
+                        {alertBanner && (
+                            <AlertBanner
+                                className='signup-body-card-banner'
+                                mode={alertBanner.mode}
+                                title={alertBanner.title}
+                                onDismiss={alertBanner.onDismiss}
+                            />
+                        )}
+                        
+                        {enableSignUpWithEmail && (
+                            <form className='signup-body-card-form'>
+                                <Input
+                                    data-testid='signup-body-card-form-email-input'
+                                    ref={emailInput}
+                                    name='email'
+                                    className='signup-body-card-form-email-input'
+                                    type='text'
+                                    inputSize={SIZE.LARGE}
+                                    value={email}
+                                    onChange={handleEmailOnChange}
+                                    placeholder={formatMessage({
+                                        id: 'signup_user_completed.emailLabel',
+                                        defaultMessage: 'Email address',
+                                    })}
+                                    disabled={isWaiting || Boolean(parsedEmail)}
+                                    autoFocus={true}
+                                    customMessage={emailCustomLabelForInput}
                                 />
-                            )}
-                            {enableSignUpWithEmail && (
-                                <form className='signup-body-card-form'>
-                                    <Input
-                                        data-testid='signup-body-card-form-email-input'
-                                        ref={emailInput}
-                                        name='email'
-                                        className='signup-body-card-form-email-input'
-                                        type='text'
-                                        inputSize={SIZE.LARGE}
-                                        value={email}
-                                        onChange={handleEmailOnChange}
-                                        placeholder={formatMessage({
-                                            id: 'signup_user_completed.emailLabel',
-                                            defaultMessage: 'Email address',
-                                        })}
-                                        disabled={isWaiting || Boolean(parsedEmail)}
-                                        autoFocus={true}
-                                        customMessage={emailCustomLabelForInput}
-                                    />
-                                    <Input
-                                        data-testid='signup-body-card-form-name-input'
-                                        ref={nameInput}
-                                        name='name'
-                                        className='signup-body-card-form-name-input'
-                                        type='text'
-                                        inputSize={SIZE.LARGE}
-                                        value={name}
-                                        onChange={handleNameOnChange}
-                                        placeholder={formatMessage({
-                                            id: 'signup_user_completed.chooseUser',
-                                            defaultMessage: 'Choose a Username',
-                                        })}
-                                        disabled={isWaiting}
-                                        autoFocus={Boolean(parsedEmail)}
-                                        customMessage={
-                                            nameError ? {type: ItemStatus.ERROR, value: nameError} : {
-                                                type: ItemStatus.INFO,
-                                                value: formatMessage({id: 'signup_user_completed.userHelp', defaultMessage: 'You can use lowercase letters, numbers, periods, dashes, and underscores.'}),
-                                            }
+                                <Input
+                                    data-testid='signup-body-card-form-name-input'
+                                    ref={nameInput}
+                                    name='name'
+                                    className='signup-body-card-form-name-input'
+                                    type='text'
+                                    inputSize={SIZE.LARGE}
+                                    value={name}
+                                    onChange={handleNameOnChange}
+                                    placeholder={formatMessage({
+                                        id: 'signup_user_completed.chooseUser',
+                                        defaultMessage: 'Choose a username',
+                                    })}
+                                    disabled={isWaiting}
+                                    autoFocus={Boolean(parsedEmail)}
+                                    customMessage={
+                                        nameError ? {type: ItemStatus.ERROR, value: nameError} : {
+                                            type: ItemStatus.INFO,
+                                            value: formatMessage({id: 'signup_user_completed.userHelp', defaultMessage: 'You can use lowercase letters, numbers, periods, dashes, and underscores.'}),
                                         }
-                                    />
-                                    <PasswordInput
-                                        data-testid='signup-body-card-form-password-input'
-                                        ref={passwordInput}
-                                        className='signup-body-card-form-password-input'
-                                        value={password}
-                                        inputSize={SIZE.LARGE}
-                                        onChange={handlePasswordInputOnChange}
-                                        disabled={isWaiting}
-                                        createMode={true}
-                                        info={passwordInfo as string}
-                                        error={passwordError}
-                                    />
-                                    {getNewsletterCheck()}
-                                    <SaveButton
-                                        extraClasses='signup-body-card-form-button-submit large'
-                                        saving={isWaiting}
-                                        disabled={!canSubmit}
-                                        onClick={handleSubmit}
-                                        defaultMessage={formatMessage({id: 'signup_user_completed.create', defaultMessage: 'Create account'})}
-                                        savingMessage={formatMessage({id: 'signup_user_completed.saving', defaultMessage: 'Creating account…'})}
-                                    />
-                                </form>
-                            )}
-                            {enableSignUpWithEmail && enableExternalSignup && (
+                                    }
+                                />
+                                <PasswordInput
+                                    data-testid='signup-body-card-form-password-input'
+                                    ref={passwordInput}
+                                    className='signup-body-card-form-password-input'
+                                    value={password}
+                                    inputSize={SIZE.LARGE}
+                                    onChange={handlePasswordInputOnChange}
+                                    disabled={isWaiting}
+                                    createMode={true}
+                                    info={passwordInfo as string}
+                                    error={passwordError}
+                                />
+                                {getNewsletterCheck()}
+                                <SaveButton
+                                    extraClasses='signup-body-card-form-button-submit large'
+                                    saving={isWaiting}
+                                    disabled={!canSubmit}
+                                    onClick={handleSubmit}
+                                    defaultMessage={formatMessage({id: 'signup_user_completed.create', defaultMessage: 'Create account'})}
+                                    savingMessage={formatMessage({id: 'signup_user_completed.saving', defaultMessage: 'Creating account…'})}
+                                />
+                            </form>
+                        )}
+                        
+                        {/* Only show SSO if explicitly enabled AND user has email signup */}
+                        {enableSignUpWithEmail && enableExternalSignup && (
+                            <>
                                 <div className='signup-body-card-form-divider'>
                                     <span className='signup-body-card-form-divider-label'>
-                                        {formatMessage({id: 'signup_user_completed.or', defaultMessage: 'or create an account with'})}
+                                        {formatMessage({id: 'signup_user_completed.or', defaultMessage: 'or'})}
                                     </span>
                                 </div>
-                            )}
-                            {enableExternalSignup && (
-                                <div className={classNames('signup-body-card-form-login-options', {column: !enableSignUpWithEmail})}>
+                                <div className='signup-body-card-form-login-options'>
                                     {getExternalSignupOptions().map((option) => (
                                         <ExternalLoginButton
                                             key={option.id}
-                                            direction={enableSignUpWithEmail ? undefined : 'column'}
+                                            direction='column'
                                             {...option}
                                         />
                                     ))}
                                 </div>
-                            )}
-                            {enableSignUpWithEmail && !serverError && (
-                                <p className='signup-body-card-agreement'>
-                                    <FormattedMessage
-                                        id='signup.agreement'
-                                        defaultMessage='By proceeding to create your account and use {siteName}, you agree to our <termsOfUseLink>Terms of Use</termsOfUseLink> and <privacyPolicyLink>Privacy Policy</privacyPolicyLink>.  If you do not agree, you cannot use {siteName}.'
-                                        values={{
-                                            siteName: SiteName,
-                                            termsOfUseLink: (chunks) => (
-                                                <ExternalLink
-                                                    href={TermsOfServiceLink as string}
-                                                    location='signup-terms-of-use'
-                                                >
-                                                    {chunks}
-                                                </ExternalLink>
-                                            ),
-                                            privacyPolicyLink: (chunks) => (
-                                                <ExternalLink
-                                                    href={PrivacyPolicyLink as string}
-                                                    location='signup-privacy-policy'
-                                                >
-                                                    {chunks}
-                                                </ExternalLink>
-                                            ),
-                                        }}
-                                    />
-                                </p>
-                            )}
+                            </>
+                        )}
+                        
+                        {enableSignUpWithEmail && !serverError && (
+                            <p className='signup-body-card-agreement'>
+                                <FormattedMessage
+                                    id='signup.agreement'
+                                    defaultMessage='By creating an account, you agree to our <termsOfUseLink>Terms of Use</termsOfUseLink> and <privacyPolicyLink>Privacy Policy</privacyPolicyLink>.'
+                                    values={{
+                                        termsOfUseLink: (chunks) => (
+                                            <ExternalLink
+                                                href={TermsOfServiceLink as string}
+                                                location='signup-terms-of-use'
+                                            >
+                                                {chunks}
+                                            </ExternalLink>
+                                        ),
+                                        privacyPolicyLink: (chunks) => (
+                                            <ExternalLink
+                                                href={PrivacyPolicyLink as string}
+                                                location='signup-privacy-policy'
+                                            >
+                                                {chunks}
+                                            </ExternalLink>
+                                        ),
+                                    }}
+                                />
+                            </p>
+                        )}
+                        
+                        {/* Show login link */}
+                        <div className='signup-body-card-footer'>
+                            <span className='signup-body-card-footer-text'>
+                                {formatMessage({id: 'signup.alreadyHaveAccount', defaultMessage: 'Already have an account?'})}
+                            </span>
+                            <Link
+                                to={`/login${search}`}
+                                className='signup-body-card-footer-link'
+                            >
+                                {formatMessage({id: 'signup.signIn', defaultMessage: 'Sign in'})}
+                            </Link>
                         </div>
                     </div>
                 </div>
-            </>
+            </div>
         );
     };
 
     return (
         <div className='signup-body'>
-            <div className='signup-body-content'>
-                {getContent()}
-            </div>
+            {getContent()}
         </div>
     );
 };

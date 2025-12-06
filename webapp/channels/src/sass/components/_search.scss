@@ -1,6 +1,7 @@
 @use "utils/functions";
 @use "utils/mixins";
 @use "utils/variables";
+@use "../../styles/ping-theme" as theme;
 
 // global header styles
 .search-bar-container--global {
@@ -257,7 +258,7 @@
     height: 44px;
     padding: 0 10px;
     border-bottom: variables.$border-gray;
-    color: #999;
+    color: theme.$text-tertiary;
     font-size: 1em;
     font-weight: 400;
     line-height: 44px;
@@ -488,14 +489,22 @@
 
     // Fighting specificity with _sidebar-right.scss (sidebar--right .sidebar--right__subheader ul)
     ul.search-hint__suggestions-list {
-        padding: 10px 0;
+        padding: 8px 0;
+        margin: 0;
     }
 
-    .search-hint__suggestions-list__option:first-child {
-        padding-top: 10px;
-    }
+    .search-hint__suggestions-list__option {
+        padding: 10px 16px;
+        margin: 4px 0;
+        border-radius: theme.$radius-input;
+        transition: background-color 0.2s ease;
 
-    .search-hint__suggestions-list__option:hover {
-        background: rgba(var(--center-channel-color-rgb), 0.08);
+        &:first-child {
+            padding-top: 10px;
+        }
+
+        &:hover {
+            background: theme.$bg-overlay-medium;
+        }
     }
 }

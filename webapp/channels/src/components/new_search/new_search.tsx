@@ -76,19 +76,28 @@ const NewSearchContainer = styled.div`
     display: flex;
     position: relative;
     align-items: center;
-    height: 28px;
+    height: 32px;
     width: 100%;
-    background-color: rgba(var(--sidebar-text-rgb), 0.08);
-    color: rgba(var(--sidebar-text-rgb), 0.64);
-    font-size: 12px;
-    font-weight: 500;
-    border-radius: var(--radius-s);
-    border: none;
-    padding: 4px;
+    background-color: rgba(0, 0, 0, 0.04);
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 13px;
+    font-weight: 400;
+    font-family: 'Inter', sans-serif;
+    border-radius: 6px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 6px 12px;
     cursor: pointer;
+    transition: all 0.15s ease;
+    
     &:hover {
-        background-color: rgba(var(--sidebar-text-rgb), 0.16);
-        color: rgba(var(--sidebar-text-rgb), 0.88);
+        background-color: rgba(0, 0, 0, 0.06);
+        border-color: rgba(0, 0, 0, 0.12);
+        color: rgba(0, 0, 0, 0.8);
+    }
+    
+    .ping-channel-header & {
+        background-color: rgba(0, 0, 0, 0.04);
+        border-color: rgba(0, 0, 0, 0.08);
     }
 `;
 

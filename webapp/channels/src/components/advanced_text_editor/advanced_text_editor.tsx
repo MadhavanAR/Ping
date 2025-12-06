@@ -676,7 +676,7 @@ const AdvancedTextEditor = ({
             },
         );
     } else {
-        createMessage = formatMessage({id: 'create_comment.addComment', defaultMessage: 'Reply to this thread...'});
+        createMessage = formatMessage({id: 'create_comment.addComment', defaultMessage: 'Add a reply...'});
     }
 
     const messageValue = isDisabled && !rewriteIsProcessing ? '' : draft.message_source || draft.message;

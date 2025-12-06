@@ -2,32 +2,53 @@
 // See LICENSE.txt for license information.
 
 #SidebarContainer .SidebarGlobalThreads {
+    margin: 8px 0 4px;
+    padding: 0 8px;
+
     .SidebarChannel {
         height: 100%;
     }
 
     .SidebarLink {
         width: 100%;
+        padding: 4px 8px;
+        margin-left: 8px;
+        border-radius: 6px;
+        color: #C6C8D1;
+        font-family: 'Inter', sans-serif;
+        font-size: 15px;
+        font-weight: 400;
+        transition: all 0.15s ease;
 
         .icon {
             padding: 3px;
-            margin-right: 7px;
+            margin-right: 8px;
             margin-left: -1px;
 
             svg {
-                fill: rgba(var(--sidebar-text-rgb), 0.64);
+                fill: #C6C8D1;
                 vertical-align: middle;
+                transition: fill 0.15s ease;
             }
         }
 
         &.unread-title {
+            color: #FFFFFF;
+            font-weight: 500;
+
             svg {
-                fill: var(--sidebar-text);
+                fill: #FFFFFF;
             }
         }
 
         &:hover {
-            padding-right: 16px;
+            padding-right: 8px;
+            background-color: rgba(255, 255, 255, 0.08);
+            color: #FFFFFF;
+
+            svg {
+                fill: #FFFFFF;
+            }
 
             .badge {
                 position: initial;

@@ -53,23 +53,6 @@ const SearchHint = (props: Props): JSX.Element => {
                             id='search_bar.usage.search_type_question'
                             defaultMessage='What are you searching for?'
                         />
-                        <FormattedMessage
-                            id='search_bar.usage.searchLearn'
-                            defaultMessage='<a>Learn about search</a>'
-                            values={{
-                                a: (chunks) => (
-                                    <ExternalLink
-                                        location='search_hint'
-                                        className='search-hint_learn-search'
-                                        href='https://mattermost.com/pl/mattermost-academy-search-training'
-                                    >
-                                        <span>{chunks}</span>
-                                        <i className='icon icon-lightbulb-outline'/>
-                                    </ExternalLink>
-                                ),
-                            }}
-                        />
-
                     </div>
                     <div className='button-container'>
                         <button

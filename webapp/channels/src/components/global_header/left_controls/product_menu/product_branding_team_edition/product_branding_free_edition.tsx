@@ -58,7 +58,7 @@ const ProductBrandingFreeEdition = (): JSX.Element => {
                 width={140}
                 height={28}
             />
-            <Badge>{badgeText}</Badge>
+            {/* Removed: Team Edition badge */}
         </ProductBrandingFreeEditionContainer>
     );
 };

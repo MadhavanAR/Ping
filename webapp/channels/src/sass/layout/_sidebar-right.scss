@@ -1,6 +1,7 @@
 @use "utils/functions";
 @use "utils/mixins";
 @use "utils/variables";
+@use "../../styles/ping-theme" as theme;
 
 .sidebar--right--width-holder {
     @media screen and (max-width: 768px) {
@@ -48,6 +49,11 @@
     height: 100%;
     padding: 0;
     transform: translateX(100%);
+    transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    &.move--left {
+        transform: translateX(0);
+    }
 
     .sidebar-right__table {
         display: table;
@@ -79,10 +85,18 @@
         height: 100%;
         flex: 1 1 auto;
         flex-direction: column;
-        background: var(--center-channel-bg);
+        background: theme.$bg-overlay-light;
 
         .info-card {
-            padding: 5px 15px 60px 15px;
+            padding: 16px;
+            margin: 12px;
+            border-radius: theme.$radius-card;
+            background: var(--center-channel-bg);
+            box-shadow: theme.$shadow-sm;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-size: 14px;
+            line-height: 1.5;
+            color: theme.$text-secondary;
         }
 
         .post-right__content {
@@ -126,9 +140,10 @@
         flex: 1 1 auto;
         align-items: center;
         padding: 0 1.6rem;
-        font-family: Metropolis, sans-serif;
-        font-size: 1.6rem;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        font-size: 16px;
         font-weight: 600;
+        color: theme.$text-primary;
 
         @include mixins.clearfix;
         h2 {
@@ -136,6 +151,7 @@
             font-family: inherit;
             font-size: inherit;
             font-weight: inherit;
+            color: inherit;
         }
     }
 
@@ -145,7 +161,7 @@
         padding: 0 8px;
         border-left: var(--border-light);
         margin: 0 0 0 8px;
-        color: rgba(var(--center-channel-color-rgb), 0.75);
+        color: theme.$text-secondary;
         cursor: pointer;
         font-family: "Open Sans", sans-serif;
         font-size: 12px;
@@ -156,14 +172,14 @@
 
         &:hover {
             border-color: transparent;
-            border-radius: 4px;
-            background: rgba(var(--center-channel-color-rgb), 0.08);
-            color: rgba(var(--center-channel-color-rgb), 0.75);
+            border-radius: theme.$radius-input;
+            background: theme.$bg-overlay-medium;
+            color: theme.$text-secondary;
         }
 
         &:active {
-            background: rgba(var(--button-bg-rgb), 0.08);
-            color: functions.v(button-bg);
+            background: theme.$bg-overlay-medium;
+            color: theme.$primary-color;
         }
     }
 
@@ -173,7 +189,7 @@
         padding: 0 8px;
         border-left: var(--border-default);
         margin: 0 0 0 8px;
-        color: rgba(var(--center-channel-color-rgb), 0.75);
+        color: theme.$text-secondary;
         font-family: "Open Sans", sans-serif;
         font-size: 12px;
         font-weight: normal;
@@ -195,14 +211,21 @@
         flex: 0 0 56px;
         align-items: center;
         justify-content: space-between;
-        padding: 0 16px 0 0;
-        border-bottom: var(--border-default);
+        padding: 0 16px;
+        border-bottom: 1px solid theme.$bg-overlay-medium;
+        background: var(--center-channel-bg);
         color: inherit;
         white-space: nowrap;
 
         .btn-icon {
             margin: 0 !important;
             font-size: 20px;
+            color: theme.$text-secondary;
+            transition: color 0.2s ease;
+
+            &:hover {
+                color: theme.$text-primary;
+            }
         }
 
         .sidebar--right__back {
@@ -229,29 +252,36 @@
 
     .sidebar--right__subheader {
         width: 100%;
-        padding-bottom: 10vh;
-        margin: auto;
-        font-size: 1em;
+        padding: 16px;
+        margin: 0;
+        font-size: 14px;
         transition: width 0.25s ease-in;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        color: theme.$text-secondary;
 
         &.search__hints {
             margin: 0;
+            padding: 16px;
         }
 
         h4 {
-            margin: 0 0 16px;
-            font-size: 1em;
+            margin: 0 0 12px;
+            font-size: 16px;
+            font-weight: 600;
+            color: theme.$text-primary;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         }
 
         ul {
-            padding: 0 0 0 30px;
+            padding: 0;
             margin: 0;
-            opacity: 0.7;
+            list-style: none;
         }
 
         li {
-            padding-bottom: 10px;
-            font-size: 0.95em;
+            padding: 8px 0;
+            font-size: 14px;
+            line-height: 1.5;
         }
 
         &.sidebar-expanded {
@@ -291,8 +321,9 @@
 #sidebar-right {
     overflow: hidden;
     height: 100%;
-    border-left: var(--border-default);
+    border-left: 1px solid theme.$bg-overlay-medium;
     box-shadow: var(--elevation-2);
+    background: theme.$bg-overlay-light;
 
     &.expanded {
         position: absolute;
@@ -305,9 +336,13 @@
     }
 
     body:not(.layout-changing) & {
-        transition-duration: 250ms;
-        transition-property: width, z-index, box-shadow;
-        transition-timing-function: ease-in-out;
+        transition-duration: 300ms;
+        transition-property: width, z-index, box-shadow, transform;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    &:not(.expanded) {
+        transform: translateX(0);
     }
 }
 
@@ -331,6 +366,29 @@
         // search bar container is now only for mobile
         .search-bar__container {
             display: none !important;
+        }
+    }
+}
+
+// Mobile responsiveness improvements
+@media screen and (max-width: 768px) {
+    #sidebar-right {
+        &.expanded {
+            width: 100vw !important;
+            max-width: 100vw !important;
+        }
+    }
+
+    .sidebar--right__subheader {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .sidebar-right__body {
+        .info-card {
+            padding: 12px;
+            margin: 8px;
+            font-size: 14px;
         }
     }
 }

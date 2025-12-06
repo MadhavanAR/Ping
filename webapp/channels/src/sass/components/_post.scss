@@ -544,18 +544,52 @@
 
 .post {
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     max-width: 100%;
-    padding: 8px 0.5em 0 1.5em; // If this needs to be changed then .post-row__padding needs to be adjusted accordingly
-    transition: height 200ms, background-color 200ms;
+    padding: 12px 16px 8px 16px;
+    margin: 8px 0;
+    transition: all 0.2s ease;
     word-wrap: break-word;
+    border-radius: 0;
+    background: transparent;
+    border: none;
+
+    // Ping Modern Bubble Style
+    &:not(.post--system):not(.post--editing) {
+        .post__content {
+            position: relative;
+            padding: 12px 16px;
+            margin-left: 0;
+            border-radius: 12px;
+            background: #FFFFFF;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 2px 8px rgba(0, 0, 0, 0.04);
+            transition: all 0.2s ease;
+        }
+
+        &:hover {
+            .post__content {
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.08);
+            }
+
+            .PostAttachmentOpenGraph .remove-button {
+                display: flex;
+            }
+
+            // Show timestamps and actions on hover
+            .post__time,
+            .post__permalink,
+            .post-menu,
+            .comment-icon__container,
+            .reacticon__container,
+            .post__reply {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+    }
 
     &:not(.post--editing):not(.post--editing):hover {
-        background-color: rgba(functions.v(center-channel-color-rgb), 0.04);
-
-        .PostAttachmentOpenGraph .remove-button {
-            display: flex;
-        }
+        background-color: transparent;
     }
 
     .hide-element {
@@ -993,10 +1027,17 @@
 
     p {
         width: 100%;
-        margin: 0;
-        line-height: 20px;
+        margin: 0 0 8px 0;
+        line-height: 1.5;
         white-space: pre-wrap;
         word-break: break-word;
+        font-family: 'Inter', sans-serif;
+        font-size: 15px;
+        color: rgba(0, 0, 0, 0.85);
+
+        &:last-child {
+            margin-bottom: 0;
+        }
     }
 
     .post__header--info {
@@ -1190,15 +1231,21 @@
 
     .post__content {
         position: relative;
-        display: table;
+        display: flex;
         width: 100%;
-        padding: 0 8px 0 5px; // if the left margin changes, the margin of post-pre-header__icons-container needs to be adjusted accordingly
+        padding: 0;
         margin: 0 auto;
-        table-layout: fixed;
+        gap: 12px;
 
         .post__img,
         .post__header-body {
-            display: table-cell;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .post__header-body {
+            flex: 1;
+            min-width: 0;
         }
 
         > div {
@@ -1214,21 +1261,25 @@
     .post-preview__header {
         display: flex;
         width: 100%;
-        align-items: center;
-        margin-bottom: 2px;
+        align-items: baseline;
+        margin-bottom: 4px;
         white-space: nowrap;
+        gap: 8px;
 
         .col__name {
             display: flex;
             min-width: 0;
             flex: 0 auto;
-            margin-right: 8px;
+            margin-right: 0;
             font-weight: 600;
-            gap: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 15px;
+            color: rgba(0, 0, 0, 0.9);
+            gap: 6px;
             text-overflow: ellipsis;
 
             &.permalink--username {
-                margin-right: 6px;
+                margin-right: 0;
             }
 
             .user-popover {
@@ -1284,9 +1335,9 @@
     }
 
     .post__img {
-        width: 53px; // if this changes, the width of post-pre-header__icons-container needs to be adjusted accordingly
-        padding-right: 10px; // if this changes, the padding of post-pre-header__icons-container needs to be adjusted accordingly
-        text-align: right;
+        width: 40px;
+        padding-right: 12px;
+        text-align: left;
 
         .icon {
             fill: functions.v(center-channel-color);
@@ -1302,13 +1353,18 @@
             overflow: hidden;
             align-items: center;
             justify-content: center;
+            border-radius: 8px;
+
+            img {
+                border-radius: 8px;
+            }
 
             &.emoji {
                 img {
-                    width: 28px;
-                    min-width: 28px;
-                    height: 28px;
-                    border-radius: unset;
+                    width: 32px;
+                    min-width: 32px;
+                    height: 32px;
+                    border-radius: 8px;
                     -webkit-user-select: none; /* Chrome all / Safari all */
                     -moz-user-select: none; /* Firefox all */
                     -ms-user-select: none; /* IE 10+ */
@@ -1334,7 +1390,9 @@
         top: -1px;
         display: inline-block;
         vertical-align: middle;
+        opacity: 0;
         visibility: hidden;
+        transition: opacity 0.15s ease, visibility 0.15s ease;
 
         &:last-child {
             margin-right: 0;
@@ -1376,12 +1434,18 @@
         display: inline-block;
         opacity: 0;
         visibility: hidden;
+        transition: opacity 0.15s ease, visibility 0.15s ease;
     }
 
     .post__body {
         width: 100%;
-        padding: 0 0 0.2em;
+        padding: 0;
+        margin-top: 2px;
         word-wrap: break-word;
+        font-family: 'Inter', sans-serif;
+        font-size: 15px;
+        line-height: 1.5;
+        color: rgba(0, 0, 0, 0.85);
 
         &-reactions-acks {
             display: flex;
@@ -1446,10 +1510,11 @@
         position: relative;
         z-index: 5;
         display: flex;
-        min-height: 30px;
+        min-height: 24px;
         flex-wrap: wrap;
         align-items: center;
-        padding: 4px 0 0;
+        padding: 6px 0 0;
+        gap: 4px;
 
         .Reaction__add {
             display: inline-block;
@@ -1606,8 +1671,13 @@
 
     .post__time,
     .post-preview__time {
-        font-size: 0.9em;
-        opacity: 0.73;
+        font-size: 11px;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.15s ease, visibility 0.15s ease;
+        color: rgba(0, 0, 0, 0.5);
+        font-family: 'Inter', sans-serif;
+        font-weight: 400;
     }
 
     .ai-generated-indicator {
@@ -1669,13 +1739,17 @@
     .permalink-icon {
         display: inline-block;
         color: variables.$primary-color;
+        opacity: 0;
         visibility: hidden;
+        transition: opacity 0.15s ease, visibility 0.15s ease;
     }
 
     .post__reply {
         display: inline-block;
         margin-right: 6px;
+        opacity: 0;
         visibility: hidden;
+        transition: opacity 0.15s ease, visibility 0.15s ease;
 
         svg {
             position: relative;
@@ -1691,13 +1765,16 @@
         display: inline-block;
         fill: variables.$primary-color;
         text-decoration: none;
+        opacity: 0;
         visibility: hidden;
+        transition: opacity 0.15s ease, visibility 0.15s ease;
 
         &:focus {
             outline: none;
         }
 
         &.icon--visible {
+            opacity: 1;
             visibility: visible;
         }
 
@@ -1729,7 +1806,9 @@
         fill: variables.$primary-color;
         font-size: 16px;
         vertical-align: top;
+        opacity: 0;
         visibility: hidden;
+        transition: opacity 0.15s ease, visibility 0.15s ease;
 
         svg {
             position: relative;
@@ -2277,6 +2356,19 @@
                 border-color: rgba(var(--center-channel-color-rgb), 0.1);
                 background-color: rgba(var(--center-channel-color-rgb), 0.05);
             }
+        }
+    }
+}
+
+// Ping Modern Message Spacing
+.post:not(.post--system) {
+    margin: 12px 0;
+    
+    &.same--root.same--user {
+        margin-top: 4px;
+        
+        .post__content {
+            margin-left: 52px; // Align with avatar width + gap
         }
     }
 }

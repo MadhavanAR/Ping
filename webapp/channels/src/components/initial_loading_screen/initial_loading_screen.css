@@ -7,10 +7,10 @@ body {
 }
 
 .LoadingScreen {
-    --background-color: #f4f4f6;
+    --background-color: #f8fafc;
     --background-color-highlight: #ffffff;
-    --stipple-color: #1e325c;
-    --stipple-opacity: 0.08;
+    --stipple-color: #6366f1;
+    --stipple-opacity: 0.06;
     position: absolute;
     z-index: 100;
     top: 0px;
@@ -28,10 +28,10 @@ body {
 }
 
 .LoadingScreen--darkMode {
-    --background-color-highlight: #28427b;
-    --background-color: #1e325c;
-    --stipple-color: #14213e;
-    --stipple-opacity: 0.8;
+    --background-color-highlight: #1e293b;
+    --background-color: #0f172a;
+    --stipple-color: #6366f1;
+    --stipple-opacity: 0.1;
 }
 
 .LoadingScreen__background,
@@ -67,7 +67,7 @@ body {
 
 .LoadingAnimation {
     --fade-duration: 150ms;
-    --colour: #1E325C;
+    --colour: #6366f1;
     --animation-initial-delay: 750ms;
     --animation-start-duration: 750ms;
     --animation-end-duration: 600ms;

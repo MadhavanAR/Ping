@@ -11,6 +11,7 @@ import CustomStatusEmoji from 'components/custom_status/custom_status_emoji';
 import CustomStatusText from 'components/custom_status/custom_status_text';
 import Timestamp from 'components/timestamp';
 import WithTooltip from 'components/with_tooltip';
+import NewSearch from 'components/new_search/new_search';
 
 import CallButton from 'plugins/call_button';
 import ChannelHeaderPlug from 'plugins/channel_header_plug';
@@ -339,65 +340,47 @@ class ChannelHeader extends React.PureComponent<Props> {
                 role='banner'
                 tabIndex={-1}
                 data-channelid={`${channel.id}`}
-                className='channel-header alt a11y__region'
+                className='channel-header ping-channel-header a11y__region'
                 data-a11y-sort-order='8'
             >
-                <div className='flex-parent'>
-                    <div className='flex-child'>
-                        <div
-                            id='channelHeaderInfo'
-                            className='channel-header__info'
-                        >
-                            <div
-                                className='channel-header__title dropdown'
-                            >
-                                <ChannelHeaderTitle
-                                    dmUser={dmUser}
-                                    gmMembers={gmMembers}
-                                    remoteNames={this.props.remoteNames}
-                                />
-                                <div
-                                    className='channel-header__icons'
+                <div className='ping-channel-header__container'>
+                    <div className='ping-channel-header__left'>
+                        <ChannelHeaderTitle
+                            dmUser={dmUser}
+                            gmMembers={gmMembers}
+                            remoteNames={this.props.remoteNames}
+                        />
+                        <div className='ping-channel-header__actions'>
+                            {muteTrigger}
+                            {memberListButton}
+                            {pinnedButton}
+                            {this.props.isFileAttachmentsEnabled &&
+                                <HeaderIconWrapper
+                                    buttonClass={channelFilesIconClass}
+                                    buttonId={'channelHeaderFilesButton'}
+                                    onClick={this.showChannelFiles}
+                                    tooltip={this.props.intl.formatMessage({id: 'channel_header.channelFiles', defaultMessage: 'Channel files'})}
                                 >
-                                    {muteTrigger}
-                                    {memberListButton}
-                                    {pinnedButton}
-                                    {this.props.isFileAttachmentsEnabled &&
-                                        <HeaderIconWrapper
-                                            buttonClass={channelFilesIconClass}
-                                            buttonId={'channelHeaderFilesButton'}
-                                            onClick={this.showChannelFiles}
-                                            tooltip={this.props.intl.formatMessage({id: 'channel_header.channelFiles', defaultMessage: 'Channel files'})}
-                                        >
-                                            {channelFilesIcon}
-                                        </HeaderIconWrapper>
-                                    }
-                                </div>
-                                <div
-                                    id='channelHeaderDescription'
-                                    className='channel-header__description'
-                                >
-                                    {dmHeaderTextStatus}
-                                    {hasGuestsText}
-                                    <ChannelHeaderText
-                                        teamId={teamId}
-                                        channel={channel}
-                                        dmUser={dmUser}
-                                    />
-                                </div>
-                            </div>
+                                    {channelFilesIcon}
+                                </HeaderIconWrapper>
+                            }
                         </div>
                     </div>
-                    {(!channel.shared || this.props.sharedChannelsPluginsEnabled) && (
-                        <>
-                            <ChannelHeaderPlug
-                                channel={channel}
-                                channelMember={channelMember}
-                            />
-                            <CallButton/>
-                        </>
-                    )}
-                    <ChannelInfoButton channel={channel}/>
+                    <div className='ping-channel-header__right'>
+                        <div className='ping-channel-header__search'>
+                            <NewSearch/>
+                        </div>
+                        {(!channel.shared || this.props.sharedChannelsPluginsEnabled) && (
+                            <>
+                                <ChannelHeaderPlug
+                                    channel={channel}
+                                    channelMember={channelMember}
+                                />
+                                <CallButton/>
+                            </>
+                        )}
+                        <ChannelInfoButton channel={channel}/>
+                    </div>
                 </div>
             </div>
         );
