@@ -18,7 +18,6 @@ import AnnouncementBar from 'components/announcement_bar';
 import BackButton from 'components/common/back_button';
 import InfiniteScroll from 'components/common/infinite_scroll';
 import SiteNameAndDescription from 'components/common/site_name_and_description';
-import ExternalLink from 'components/external_link';
 import LoadingScreen from 'components/loading_screen';
 import SystemPermissionGate from 'components/permissions_gates/system_permission_gate';
 import LogoutIcon from 'components/widgets/icons/fa_logout_icon';
