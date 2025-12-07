@@ -44,7 +44,9 @@ jobs:
           host: 212.2.254.40
           username: ubuntu
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
           script: |
-            cd /opt/ping
-            docker compose pull
-            docker compose up -d
+            echo "Connected to $(hostname)"
+            whoami
+            pwd
+            ls -la
