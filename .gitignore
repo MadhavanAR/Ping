@@ -164,3 +164,8 @@ docker-compose.override.yaml
 CLAUDE.md
 .cursorrules
 ping-app.tar
+
+# Act (GitHub Actions local runner)
+.act/
+act-*
+.secrets
