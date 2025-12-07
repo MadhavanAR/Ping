@@ -21,7 +21,7 @@ const ProductBrandingHeading = styled.span`
     margin: 0;
     color: inherit;
 
-    margin-left: 8px;
+    margin-left: 4px;
 `;
 
 const ProductBranding = (): JSX.Element => {

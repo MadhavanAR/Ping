@@ -68,7 +68,7 @@ export const ProductMenuButton = styled.button.attrs(() => ({
     }
 
     > * + * {
-        margin-left: 8px;
+        margin-left: 4px;
     }
 `;
 
