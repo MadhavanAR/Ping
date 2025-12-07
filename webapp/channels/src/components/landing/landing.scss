@@ -1,0 +1,87 @@
+// Copyright (c) 2015-present Mattermost, Inc. All Rights Reserved.
+// See LICENSE.txt for license information.
+
+@use "../../styles/ping-theme" as theme;
+
+.landing-page {
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, theme.$primary-color 0%, darken(theme.$primary-color, 15%) 100%);
+    padding: 20px;
+
+    &__hero {
+        width: 100%;
+        max-width: 600px;
+        text-align: center;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 32px;
+    }
+
+    &__logo {
+        margin-bottom: 16px;
+
+        &-image {
+            height: 80px;
+            width: auto;
+        }
+    }
+
+    &__title {
+        margin: 0;
+        color: theme.$bg-white;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        font-size: 48px;
+        font-weight: 700;
+        line-height: 1.2;
+
+        @media screen and (max-width: 768px) {
+            font-size: 36px;
+        }
+    }
+
+    &__subtitle {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.9);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 1.5;
+
+        @media screen and (max-width: 768px) {
+            font-size: 18px;
+        }
+    }
+
+    &__login-button {
+        padding: 16px 48px;
+        border: 2px solid theme.$bg-white;
+        border-radius: theme.$radius-button;
+        margin-top: 16px;
+        background: theme.$bg-white;
+        color: theme.$primary-color;
+        cursor: pointer;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        font-size: 18px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+
+        &:hover {
+            background: transparent;
+            color: theme.$bg-white;
+            transform: translateY(-2px);
+            box-shadow: theme.$shadow-md;
+        }
+
+        &:active {
+            transform: translateY(0);
+        }
+    }
+}
+

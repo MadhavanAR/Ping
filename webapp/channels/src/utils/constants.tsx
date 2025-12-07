@@ -1175,8 +1175,8 @@ export const LicenseLinks = {
     ENTRY_LIMITS_INFO: 'https://mattermost.com/pl/mattermost-entry-limits',
     TRIAL_INFO_LINK: 'https://mattermost.com/trial',
     EMBARGOED_COUNTRIES: 'https://mattermost.com/pl/limitations-for-embargoed-countries',
-    SOFTWARE_SERVICES_LICENSE_AGREEMENT: 'https://mattermost.com/pl/software-and-services-license-agreement',
-    SOFTWARE_SERVICES_LICENSE_AGREEMENT_TEXT: 'Software Services and License Agreement',
+    SOFTWARE_SERVICES_LICENSE_AGREEMENT: 'https://ping.com/pl/software-and-services-license-agreement',
+    SOFTWARE_SERVICES_LICENSE_AGREEMENT_TEXT: 'Ping Software Services and License Agreement',
     UNSUPPORTED: 'https://mattermost.com/pricing/',
     UNSUPPORTED_UPGRADE_LINK: 'https://docs.mattermost.com/administration-guide/upgrade/enterprise-install-upgrade.html#upgrading-to-enterprise-edition-from-mattermost-team-edition',
 };

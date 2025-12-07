@@ -33,7 +33,6 @@ import './select_team.scss';
 
 export const TEAMS_PER_PAGE = 30;
 const TEAM_MEMBERSHIP_DENIAL_ERROR_ID = 'api.team.add_members.user_denied';
-const MATTERMOST_ACADEMY_TEAM_TRAINING_LINK = 'https://mattermost.com/pl/mattermost-academy-team-training';
 
 type Actions = {
     getTeams: (page?: number, perPage?: number, includeTotalCount?: boolean) => Promise<ActionResult<unknown>>;
@@ -245,12 +244,12 @@ export default class SelectTeam extends React.PureComponent<Props, State> {
                             {createTeamRestricted ? (
                                 <FormattedMessage
                                     id='signup_team.no_open_teams'
-                                    defaultMessage='No teams are available to join. Please ask your administrator for an invite.'
+                                    defaultMessage='No teams available. Please contact your administrator for access.'
                                 />
                             ) : (
                                 <FormattedMessage
                                     id='signup_team.no_open_teams_canCreate'
-                                    defaultMessage='No teams are available to join. Please create a new team or ask your administrator for an invite.'
+                                    defaultMessage='Create a new team to get started.'
                                 />
                             )}
                         </div>
@@ -263,7 +262,7 @@ export default class SelectTeam extends React.PureComponent<Props, State> {
                             <SystemPermissionGate permissions={[Permissions.CREATE_TEAM]}>
                                 <FormattedMessage
                                     id='signup_team.no_open_teams_canCreate'
-                                    defaultMessage='No teams are available to join. Please create a new team or ask your administrator for an invite.'
+                                    defaultMessage='Create a new team to get started.'
                                 />
                             </SystemPermissionGate>
                             <SystemPermissionGate
@@ -272,7 +271,7 @@ export default class SelectTeam extends React.PureComponent<Props, State> {
                             >
                                 <FormattedMessage
                                     id='signup_team.no_open_teams'
-                                    defaultMessage='No teams are available to join. Please ask your administrator for an invite.'
+                                    defaultMessage='No teams available. Please contact your administrator for access.'
                                 />
                             </SystemPermissionGate>
                         </div>

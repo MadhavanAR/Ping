@@ -85,7 +85,7 @@
         height: 100%;
         flex: 1 1 auto;
         flex-direction: column;
-        background: theme.$bg-overlay-light;
+        background: var(--center-channel-bg);
 
         .info-card {
             padding: 16px;

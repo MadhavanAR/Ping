@@ -45,11 +45,12 @@ export default function RootRedirect(props: Props) {
         return null;
     }
 
+    // Redirect to landing page if not logged in
     return (
         <Redirect
             to={{
                 ...props.location,
-                pathname: '/login',
+                pathname: '/',
             }}
         />
     );
