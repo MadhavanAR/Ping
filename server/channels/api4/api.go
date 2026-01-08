@@ -351,6 +351,7 @@ func Init(srv *app.Server) (*API, error) {
 	api.InitGroup()
 	api.InitAction()
 	api.InitCloud()
+	api.InitHealth()
 	api.InitImport()
 	api.InitRemoteCluster()
 	api.InitSharedChannels()

@@ -36,6 +36,7 @@ import (
 	"github.com/mattermost/mattermost/server/v8/channels/app/platform"
 	"github.com/mattermost/mattermost/server/v8/channels/app/properties"
 	"github.com/mattermost/mattermost/server/v8/channels/app/teams"
+	"github.com/mattermost/mattermost/server/v8/channels/app/trial"
 	"github.com/mattermost/mattermost/server/v8/channels/app/users"
 	"github.com/mattermost/mattermost/server/v8/channels/audit"
 	"github.com/mattermost/mattermost/server/v8/channels/jobs"
@@ -129,6 +130,7 @@ type Server struct {
 	userService      *users.UserService
 	teamService      *teams.TeamService
 	propertyService  *properties.PropertyService
+	trialService     *trial.Service
 
 	serviceMux           sync.RWMutex
 	remoteClusterService remotecluster.RemoteClusterServiceIFace
@@ -238,6 +240,17 @@ func NewServer(options ...Option) (*Server, error) {
 	})
 	if err != nil {
 		return nil, errors.Wrapf(err, "unable to create properties service")
+	}
+
+	// Initialize trial service with usage adapter
+	usageAdapter := trial.NewUsageAdapter(s.Store().Post(), s.Store().FileInfo())
+	s.trialService, err = trial.New(trial.ServiceConfig{
+		UserStore:    s.Store().User(),
+		LicenseFn:    s.License,
+		UsageService: usageAdapter,
+	})
+	if err != nil {
+		return nil, errors.Wrapf(err, "unable to create trial service")
 	}
 
 	// It is important to initialize the hub only after the global logger is set
