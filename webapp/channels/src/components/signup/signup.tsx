@@ -355,7 +355,7 @@ const Signup = ({onCustomizeHeader}: SignupProps) => {
                 id: 'signup.title',
                 defaultMessage: 'Create Account | {siteName}',
             },
-            {siteName: SiteName || 'Mattermost'},
+            {siteName: SiteName || 'Ping'},
         );
     }, [formatMessage, SiteName]);
 

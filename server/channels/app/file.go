@@ -798,6 +798,17 @@ func (a *App) UploadFileX(rctx request.CTX, channelID, name string, input io.Rea
 		return nil, t.newAppError("api.file.upload_file.too_large_detailed.app_error", http.StatusRequestEntityTooLarge, "Length", t.ContentLength, "Limit", t.maxFileSize)
 	}
 
+	// Check trial storage limit before uploading file
+	if a.IsTrialAccount() {
+		trialLimitReached, trialErr := a.CheckTrialStorageLimit(rctx, t.ContentLength)
+		if trialErr != nil {
+			return nil, trialErr
+		}
+		if trialLimitReached {
+			return nil, model.NewAppError("UploadFileX", "api.file.upload_file.trial_storage_limit.exceeded", map[string]any{"limit": TrialLimits.MaxStorageGB}, "", http.StatusBadRequest)
+		}
+	}
+
 	t.init(a)
 
 	var aerr *model.AppError

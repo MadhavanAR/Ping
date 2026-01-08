@@ -1,0 +1,113 @@
+{
+  "pricing": {
+    "slack_comparison": {
+      "message": "Save up to 40% compared to Slack",
+      "savings_percentage": {
+        "pro": 37.5,
+        "business": 33.3
+      }
+    },
+    "products": {
+      "starter": {
+        "name": "Starter",
+        "sku": "cloud-starter",
+        "price_per_seat_monthly": 0,
+        "price_per_seat_yearly": 0,
+        "features": [
+          "Up to 10,000 message history",
+          "10GB file storage",
+          "Unlimited channels and DMs",
+          "1-on-1 video calls",
+          "Screen sharing",
+          "File sharing",
+          "Search within message history",
+          "Mobile and desktop apps"
+        ],
+        "limits": {
+          "messages": 10000,
+          "storage_gb": 10,
+          "users": "unlimited"
+        }
+      },
+      "pro": {
+        "name": "Pro",
+        "sku": "cloud-professional",
+        "price_per_seat_monthly": 5.00,
+        "price_per_seat_yearly": 50.00,
+        "yearly_savings_percentage": 16.7,
+        "slack_equivalent_price": 8.00,
+        "features": [
+          "Everything in Starter",
+          "Unlimited message history",
+          "Unlimited file storage",
+          "Advanced search with filters",
+          "Guest accounts",
+          "Priority support",
+          "Custom emoji",
+          "Group video calls (up to 15 participants)",
+          "Screen sharing",
+          "File previews",
+          "Integration marketplace"
+        ],
+        "limits": {
+          "messages": "unlimited",
+          "storage_gb": "unlimited",
+          "users": "unlimited",
+          "video_participants": 15
+        }
+      },
+      "business": {
+        "name": "Business",
+        "sku": "cloud-enterprise",
+        "price_per_seat_monthly": 10.00,
+        "price_per_seat_yearly": 100.00,
+        "yearly_savings_percentage": 16.7,
+        "slack_equivalent_price": 15.00,
+        "features": [
+          "Everything in Pro",
+          "Advanced security & compliance",
+          "SSO authentication (SAML, LDAP, OAuth)",
+          "Audit logs",
+          "Data retention policies",
+          "Advanced permissions",
+          "99.99% uptime SLA",
+          "24/7 priority support",
+          "Group video calls (unlimited participants)",
+          "Custom branding",
+          "Advanced analytics",
+          "Workflow automations",
+          "API access",
+          "Webhook integrations"
+        ],
+        "limits": {
+          "messages": "unlimited",
+          "storage_gb": "unlimited",
+          "users": "unlimited",
+          "video_participants": "unlimited"
+        }
+      }
+    },
+    "trial": {
+      "duration_days": 30,
+      "limits": {
+        "max_users": 10,
+        "max_messages": 10000,
+        "max_storage_gb": 10,
+        "full_features": true
+      },
+      "features": [
+        "Full access to Pro features",
+        "30 days free trial",
+        "No credit card required",
+        "Easy upgrade path",
+        "Cancel anytime"
+      ]
+    },
+    "currency": "USD",
+    "billing_interval": {
+      "monthly": "month",
+      "yearly": "year"
+    }
+  }
+}
+

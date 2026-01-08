@@ -71,14 +71,14 @@ type FreeTrialProps = {
 export const FreeTrial = ({daysLeftOnTrial}: FreeTrialProps) => {
     const [openSalesLink] = useOpenSalesLink();
     return (
-        <div className='UpgradeMattermostCloud'>
-            <div className='UpgradeMattermostCloud__image'>
+        <div className='UpgradePingCloud'>
+            <div className='UpgradePingCloud__image'>
                 <UpgradeSvg
                     height={167}
                     width={234}
                 />
             </div>
-            <div className='UpgradeMattermostCloud__title'>
+            <div className='UpgradePingCloud__title'>
                 {daysLeftOnTrial > TrialPeriodDays.TRIAL_1_DAY &&
                     <FormattedMessage
                         id='admin.billing.subscription.freeTrial.title'
@@ -92,7 +92,7 @@ export const FreeTrial = ({daysLeftOnTrial}: FreeTrialProps) => {
                     />
                 }
             </div>
-            <div className='UpgradeMattermostCloud__description'>
+            <div className='UpgradePingCloud__description'>
                 {daysLeftOnTrial > TrialPeriodDays.TRIAL_WARNING_THRESHOLD &&
                     <FormattedMessage
                         id='admin.billing.subscription.freeTrial.description'
@@ -103,21 +103,21 @@ export const FreeTrial = ({daysLeftOnTrial}: FreeTrialProps) => {
                 {(daysLeftOnTrial > TrialPeriodDays.TRIAL_1_DAY && daysLeftOnTrial <= TrialPeriodDays.TRIAL_WARNING_THRESHOLD) &&
                     <FormattedMessage
                         id='admin.billing.subscription.freeTrial.lessThan3Days.description'
-                        defaultMessage='Your free trial will end in {daysLeftOnTrial, number} {daysLeftOnTrial, plural, one {day} other {days}}. Contact sales to continue enjoying the benefits of Cloud Professional.'
+                        defaultMessage='Your free trial will end in {daysLeftOnTrial, number} {daysLeftOnTrial, plural, one {day} other {days}}. Contact sales to continue enjoying the benefits of Ping Pro.'
                         values={{daysLeftOnTrial}}
                     />
                 }
                 {(daysLeftOnTrial === TrialPeriodDays.TRIAL_1_DAY || daysLeftOnTrial === TrialPeriodDays.TRIAL_0_DAYS) &&
                     <FormattedMessage
                         id='admin.billing.subscription.freeTrial.lastDay.description'
-                        defaultMessage='Your free trial has ended. Add payment information to continue enjoying the benefits of Cloud Professional.'
+                        defaultMessage='Your free trial has ended. Add payment information to continue enjoying the benefits of Ping Pro.'
                     />
                 }
             </div>
             <button
                 type='button'
                 onClick={() => openSalesLink()}
-                className='UpgradeMattermostCloud__upgradeButton btn btn-primary'
+                className='UpgradePingCloud__upgradeButton btn btn-primary'
             >
                 <FormattedMessage
                     id='admin.billing.subscription.privateCloudCard.contactSales'

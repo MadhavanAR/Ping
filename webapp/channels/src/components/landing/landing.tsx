@@ -37,18 +37,35 @@ const Landing = () => {
                     <p className='landing-page__subtitle'>
                         {formatMessage({
                             id: 'landing.subtitle',
-                            defaultMessage: 'Connect, collaborate, and communicate securely with your team.',
+                            defaultMessage: 'Connect, collaborate, and communicate securely with your team. Save up to 40% compared to Slack.',
                         })}
                     </p>
-                    <button
-                        className='landing-page__login-button'
-                        onClick={handleLoginClick}
-                    >
+                    <div className='landing-page__cta-buttons'>
+                        <button
+                            className='landing-page__trial-button'
+                            onClick={() => history.push('/signup')}
+                        >
+                            {formatMessage({
+                                id: 'landing.start_trial',
+                                defaultMessage: 'Start Free Trial',
+                            })}
+                        </button>
+                        <button
+                            className='landing-page__login-button'
+                            onClick={handleLoginClick}
+                        >
+                            {formatMessage({
+                                id: 'landing.login',
+                                defaultMessage: 'Login',
+                            })}
+                        </button>
+                    </div>
+                    <p className='landing-page__trial-info'>
                         {formatMessage({
-                            id: 'landing.login',
-                            defaultMessage: 'Login',
+                            id: 'landing.trial_info',
+                            defaultMessage: '30-day free trial • No credit card required • Full Pro features',
                         })}
-                    </button>
+                    </p>
                 </div>
             </div>
         </div>

@@ -167,5 +167,6 @@ ping-app.tar
 
 # Act (GitHub Actions local runner)
 .act/
-act-*
+act-*.log
+act-*.tmp
 .secrets

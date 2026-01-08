@@ -14,7 +14,7 @@ import {CloudLinks, CloudProducts} from 'utils/constants';
 type Props = {
     isFreeTrial: boolean;
     subscriptionPlan: string | undefined;
-    onUpgradeMattermostCloud: () => void;
+    onUpgradePingCloud: () => void;
 }
 
 const ContactSalesCard = (props: Props) => {
@@ -22,7 +22,7 @@ const ContactSalesCard = (props: Props) => {
     const {
         isFreeTrial,
         subscriptionPlan,
-        onUpgradeMattermostCloud,
+        onUpgradePingCloud,
     } = props;
     let title;
     let description;
@@ -56,13 +56,13 @@ const ContactSalesCard = (props: Props) => {
         title = (
             <FormattedMessage
                 id='admin.billing.subscription.privateCloudCard.cloudEnterprise.title'
-                defaultMessage='Looking to rollout Mattermost for your entire organization? '
+                defaultMessage='Looking to rollout Ping for your entire organization? '
             />
         );
         description = (
             <FormattedMessage
                 id='admin.billing.subscription.privateCloudCard.cloudEnterprise.description'
-                defaultMessage="At Mattermost, we work with you and your organization to meet your needs throughout the product. If you're considering a wider rollout, talk to us."
+                defaultMessage="At Ping, we work with you and your organization to meet your needs throughout the product. If you're considering a wider rollout, talk to us."
             />
         );
     } else {
@@ -71,7 +71,7 @@ const ContactSalesCard = (props: Props) => {
             title = (
                 <FormattedMessage
                     id='admin.billing.subscription.privateCloudCard.cloudFree.title'
-                    defaultMessage='Upgrade to Cloud Professional'
+                    defaultMessage='Upgrade to Ping Pro'
                 />
             );
             description = (
@@ -85,7 +85,7 @@ const ContactSalesCard = (props: Props) => {
             title = (
                 <FormattedMessage
                     id='admin.billing.subscription.privateCloudCard.cloudProfessional.title'
-                    defaultMessage='Upgrade to Cloud Enterprise'
+                    defaultMessage='Upgrade to Ping Business'
                 />
             );
             description = (
@@ -100,13 +100,13 @@ const ContactSalesCard = (props: Props) => {
             title = (
                 <FormattedMessage
                     id='admin.billing.subscription.privateCloudCard.cloudEnterprise.title'
-                    defaultMessage='Looking to rollout Mattermost for your entire organization? '
+                    defaultMessage='Looking to rollout Ping for your entire organization? '
                 />
             );
             description = (
                 <FormattedMessage
                     id='admin.billing.subscription.privateCloudCard.cloudEnterprise.description'
-                    defaultMessage="At Mattermost, we work with you and your organization to meet your needs throughout the product. If you're considering a wider rollout, talk to us."
+                    defaultMessage="At Ping, we work with you and your organization to meet your needs throughout the product. If you're considering a wider rollout, talk to us."
                 />
             );
             break;
@@ -114,7 +114,7 @@ const ContactSalesCard = (props: Props) => {
             title = (
                 <FormattedMessage
                     id='admin.billing.subscription.privateCloudCard.cloudProfessional.title'
-                    defaultMessage='Upgrade to Cloud Enterprise'
+                    defaultMessage='Upgrade to Ping Business'
                 />
             );
             description = (
@@ -155,7 +155,7 @@ const ContactSalesCard = (props: Props) => {
                         type='button'
                         onClick={() => {
                             if (subscriptionPlan === CloudProducts.STARTER) {
-                                onUpgradeMattermostCloud();
+                                onUpgradePingCloud();
                             } else {
                                 openSalesLink();
                             }

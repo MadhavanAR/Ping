@@ -65,6 +65,18 @@ const (
 	SkuCloudEnterprise   = ProductSku("cloud-enterprise")
 )
 
+// Ping Pricing Structure (as defined in pricing-config.json):
+// - Starter (cloud-starter): $0/user/month (Free tier)
+// - Pro (cloud-professional): $5/user/month (vs Slack $8 - 37.5% savings)
+// - Business (cloud-enterprise): $10/user/month (vs Slack $15 - 33% savings)
+// - Enterprise (cloud-advanced): Custom pricing
+//
+// Trial Limits:
+// - Duration: 30 days
+// - Max Users: 10
+// - Max Messages: 10,000
+// - Max Storage: 10GB
+
 // Product model represents a product on the cloud system.
 type Product struct {
 	ID                string             `json:"id"`

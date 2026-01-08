@@ -162,6 +162,17 @@ func (a *App) CreatePost(rctx request.CTX, post *model.Post, channel *model.Chan
 		return nil, model.NewAppError("CreatePost", "app.post.create_post.shared_dm_or_gm.app_error", nil, "", http.StatusBadRequest)
 	}
 
+	// Check trial message limit before creating post
+	if a.IsTrialAccount() {
+		trialLimitReached, trialErr := a.CheckTrialMessageLimit(rctx)
+		if trialErr != nil {
+			return nil, trialErr
+		}
+		if trialLimitReached {
+			return nil, model.NewAppError("CreatePost", "api.post.create_post.trial_message_limit.exceeded", map[string]any{"limit": TrialLimits.MaxMessages}, "", http.StatusBadRequest)
+		}
+	}
+
 	foundPost, err := a.deduplicateCreatePost(rctx, post)
 	if err != nil {
 		return nil, err

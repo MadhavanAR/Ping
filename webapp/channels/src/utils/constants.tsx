@@ -535,20 +535,23 @@ export const SelfHostedProducts = {
     ENTERPRISE: 'enterprise',
 };
 
-export const MattermostFeatures = {
-    GUEST_ACCOUNTS: 'mattermost.feature.guest_accounts',
-    CUSTOM_USER_GROUPS: 'mattermost.feature.custom_user_groups',
-    CREATE_MULTIPLE_TEAMS: 'mattermost.feature.create_multiple_teams',
-    START_CALL: 'mattermost.feature.start_call',
-    PLAYBOOKS_RETRO: 'mattermost.feature.playbooks_retro',
-    UNLIMITED_MESSAGES: 'mattermost.feature.unlimited_messages',
-    UNLIMITED_FILE_STORAGE: 'mattermost.feature.unlimited_file_storage',
-    ALL_PROFESSIONAL_FEATURES: 'mattermost.feature.all_professional',
-    ALL_ENTERPRISE_FEATURES: 'mattermost.feature.all_enterprise',
-    UPGRADE_DOWNGRADED_WORKSPACE: 'mattermost.feature.upgrade_downgraded_workspace',
-    PLUGIN_FEATURE: 'mattermost.feature.plugin',
-    HIGHLIGHT_WITHOUT_NOTIFICATION: 'mattermost.feature.highlight_without_notification',
+export const PingFeatures = {
+    GUEST_ACCOUNTS: 'ping.feature.guest_accounts',
+    CUSTOM_USER_GROUPS: 'ping.feature.custom_user_groups',
+    CREATE_MULTIPLE_TEAMS: 'ping.feature.create_multiple_teams',
+    START_CALL: 'ping.feature.start_call',
+    PLAYBOOKS_RETRO: 'ping.feature.playbooks_retro',
+    UNLIMITED_MESSAGES: 'ping.feature.unlimited_messages',
+    UNLIMITED_FILE_STORAGE: 'ping.feature.unlimited_file_storage',
+    ALL_PROFESSIONAL_FEATURES: 'ping.feature.all_professional',
+    ALL_ENTERPRISE_FEATURES: 'ping.feature.all_enterprise',
+    UPGRADE_DOWNGRADED_WORKSPACE: 'ping.feature.upgrade_downgraded_workspace',
+    PLUGIN_FEATURE: 'ping.feature.plugin',
+    HIGHLIGHT_WITHOUT_NOTIFICATION: 'ping.feature.highlight_without_notification',
 };
+
+// Alias for backward compatibility
+export const MattermostFeatures = PingFeatures;
 
 export enum LicenseSkus {
     E10 = 'E10',
@@ -978,7 +981,7 @@ defineMessages({
     },
     socketError: {
         id: 'channel_loader.socketError',
-        defaultMessage: 'Please check connection, Ping unreachable. If issue persists, ask administrator to [check WebSocket port](!https://docs.ping.com/install/troubleshooting.html#please-check-connection-ping-unreachable-if-issue-persists-ask-administrator-to-check-websocket-port).',
+        defaultMessage: 'Please check connection, Ping unreachable. If issue persists, ask administrator to [check WebSocket port](!https://docs.ping.com/install/troubleshooting.html#websocket-port).',
     },
     trialLicenseExpiring: {
         id: 'announcement_bar.error.trial_license_expiring',
@@ -1092,29 +1095,29 @@ export const DraggingStateTypes = {
 };
 
 export const AboutLinks = {
-    TERMS_OF_SERVICE: 'https://mattermost.com/pl/terms-of-use/',
-    PRIVACY_POLICY: 'https://mattermost.com/pl/privacy-policy/',
+    TERMS_OF_SERVICE: 'https://ping.com/pl/terms-of-use/',
+    PRIVACY_POLICY: 'https://ping.com/pl/privacy-policy/',
 };
 
 export const CloudLinks = {
-    BILLING_DOCS: 'https://docs.mattermost.com/pl/cloud-billing',
-    PRICING: 'https://mattermost.com/pl/pricing/',
-    PRORATED_PAYMENT: 'https://mattermost.com/pl/mattermost-cloud-prorate-documentation',
-    DEPLOYMENT_OPTIONS: 'https://mattermost.com/deploy/',
-    DOWNLOAD_UPDATE: 'https://mattermost.com/deploy/',
-    CLOUD_SIGNUP_PAGE: 'https://mattermost.com/sign-up/',
-    SELF_HOSTED_SIGNUP: 'https://customers.mattermost.com/signup',
-    DELINQUENCY_DOCS: 'https://docs.mattermost.com/about/cloud-subscriptions.html#failed-or-late-payments',
-    SELF_HOSTED_PRICING: 'https://mattermost.com/pl/pricing/#self-hosted',
+    BILLING_DOCS: 'https://docs.ping.com/pl/cloud-billing',
+    PRICING: 'https://ping.com/pl/pricing/',
+    PRORATED_PAYMENT: 'https://ping.com/pl/ping-cloud-prorate-documentation',
+    DEPLOYMENT_OPTIONS: 'https://ping.com/deploy/',
+    DOWNLOAD_UPDATE: 'https://ping.com/deploy/',
+    CLOUD_SIGNUP_PAGE: 'https://ping.com/sign-up/',
+    SELF_HOSTED_SIGNUP: 'https://customers.ping.com/signup',
+    DELINQUENCY_DOCS: 'https://docs.ping.com/about/cloud-subscriptions.html#failed-or-late-payments',
+    SELF_HOSTED_PRICING: 'https://ping.com/pl/pricing/#self-hosted',
 };
 
 export const HostedCustomerLinks = {
-    BILLING_DOCS: 'https://mattermost.com/pl/how-self-hosted-billing-works',
-    SELF_HOSTED_BILLING: 'https://mattermost.com/pl/self-hosted-billing',
-    TERMS_AND_CONDITIONS: 'https://mattermost.com/enterprise-edition-terms/',
-    SECURITY_UPDATES: 'https://mattermost.com/security-updates/',
-    DOWNLOAD: 'https://mattermost.com/download',
-    NEWSLETTER_UNSUBSCRIBE_LINK: 'https://forms.mattermost.com/UnsubscribePage.html',
+    BILLING_DOCS: 'https://ping.com/pl/how-self-hosted-billing-works',
+    SELF_HOSTED_BILLING: 'https://ping.com/pl/self-hosted-billing',
+    TERMS_AND_CONDITIONS: 'https://ping.com/enterprise-edition-terms/',
+    SECURITY_UPDATES: 'https://ping.com/security-updates/',
+    DOWNLOAD: 'https://ping.com/download',
+    NEWSLETTER_UNSUBSCRIBE_LINK: 'https://forms.ping.com/UnsubscribePage.html',
     PRIVACY: AboutLinks.PRIVACY_POLICY,
 };
 
@@ -1171,17 +1174,19 @@ export const DeveloperLinks = {
 };
 
 export const LicenseLinks = {
-    CONTACT_SALES: 'https://mattermost.com/contact-sales/',
-    ENTRY_LIMITS_INFO: 'https://mattermost.com/pl/mattermost-entry-limits',
-    TRIAL_INFO_LINK: 'https://mattermost.com/trial',
-    EMBARGOED_COUNTRIES: 'https://mattermost.com/pl/limitations-for-embargoed-countries',
+    CONTACT_SALES: 'https://ping.com/contact-sales/',
+    ENTRY_LIMITS_INFO: 'https://ping.com/pl/ping-entry-limits',
+    TRIAL_INFO_LINK: 'https://ping.com/trial',
+    EMBARGOED_COUNTRIES: 'https://ping.com/pl/limitations-for-embargoed-countries',
     SOFTWARE_SERVICES_LICENSE_AGREEMENT: 'https://ping.com/pl/software-and-services-license-agreement',
     SOFTWARE_SERVICES_LICENSE_AGREEMENT_TEXT: 'Ping Software Services and License Agreement',
-    UNSUPPORTED: 'https://mattermost.com/pricing/',
-    UNSUPPORTED_UPGRADE_LINK: 'https://docs.mattermost.com/administration-guide/upgrade/enterprise-install-upgrade.html#upgrading-to-enterprise-edition-from-mattermost-team-edition',
+    UNSUPPORTED: 'https://ping.com/pricing/',
+    UNSUPPORTED_UPGRADE_LINK: 'https://docs.ping.com/administration-guide/upgrade/enterprise-install-upgrade.html#upgrading-to-enterprise-edition-from-ping-team-edition',
 };
 
-export const MattermostLink = '#';
+export const PingLink = '#';
+// Alias for backward compatibility
+export const MattermostLink = PingLink;
 
 export const BillingSchemes = {
     FLAT_FEE: 'flat_fee',

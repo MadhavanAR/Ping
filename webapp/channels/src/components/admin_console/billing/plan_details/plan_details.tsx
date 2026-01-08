@@ -44,7 +44,7 @@ export const PlanDetailsTopElements = ({
         productName = (
             <FormattedMessage
                 id='admin.billing.subscription.planDetails.productName.cloudProfessional'
-                defaultMessage='Cloud Professional'
+                defaultMessage='Ping Pro'
             />
         );
         break;
@@ -52,7 +52,7 @@ export const PlanDetailsTopElements = ({
         productName = (
             <FormattedMessage
                 id='admin.billing.subscription.planDetails.productName.cloudEnterprise'
-                defaultMessage='Cloud Enterprise'
+                defaultMessage='Ping Business'
             />
         );
         break;
@@ -60,7 +60,7 @@ export const PlanDetailsTopElements = ({
         productName = (
             <FormattedMessage
                 id='admin.billing.subscription.planDetails.productName.cloudFree'
-                defaultMessage='Cloud Free'
+                defaultMessage='Ping Starter'
             />
         );
         break;
@@ -68,7 +68,7 @@ export const PlanDetailsTopElements = ({
         productName = (
             <FormattedMessage
                 id='admin.billing.subscription.planDetails.productName.cloudAdvanced'
-                defaultMessage='Cloud Enterprise Advanced'
+                defaultMessage='Ping Enterprise'
             />
         );
         break;

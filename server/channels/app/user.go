@@ -321,6 +321,17 @@ func (a *App) CreateGuest(rctx request.CTX, user *model.User) (*model.User, *mod
 }
 
 func (a *App) createUserOrGuest(rctx request.CTX, user *model.User, guest bool) (*model.User, *model.AppError) {
+	// Check trial limits first if this is a trial account
+	if a.IsTrialAccount() {
+		trialLimitReached, trialErr := a.CheckTrialUserLimit(rctx)
+		if trialErr != nil {
+			return nil, trialErr
+		}
+		if trialLimitReached {
+			return nil, model.NewAppError("createUserOrGuest", "api.user.create_user.trial_user_limit.exceeded", map[string]any{"limit": TrialLimits.MaxUsers}, "", http.StatusBadRequest)
+		}
+	}
+
 	atUserLimit, limitErr := a.isAtUserLimit()
 	if limitErr != nil {
 		return nil, limitErr

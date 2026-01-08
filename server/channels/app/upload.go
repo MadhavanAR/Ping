@@ -154,6 +154,17 @@ func (a *App) CreateUploadSession(rctx request.CTX, us *model.UploadSession) (*m
 			err := model.NewAppError("CreateUploadSession", "app.upload.create.cannot_upload_to_restricted_dm.error", nil, "", http.StatusBadRequest)
 			return nil, err
 		}
+
+		// Check trial storage limit before creating upload session
+		if a.IsTrialAccount() && us.FileSize > 0 {
+			trialLimitReached, trialErr := a.CheckTrialStorageLimit(rctx, us.FileSize)
+			if trialErr != nil {
+				return nil, trialErr
+			}
+			if trialLimitReached {
+				return nil, model.NewAppError("CreateUploadSession", "api.file.upload_file.trial_storage_limit.exceeded", map[string]any{"limit": TrialLimits.MaxStorageGB}, "", http.StatusBadRequest)
+			}
+		}
 	}
 
 	us, storeErr := a.Srv().Store().UploadSession().Save(us)

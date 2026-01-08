@@ -247,7 +247,7 @@ const Login = ({onCustomizeHeader}: LoginProps) => {
                             return;
                         }
 
-                        if (event.data && event.data.type === 'mattermost_external_auth_login' && event.data.ack === true) {
+                        if (event.data && event.data.type === 'ping_external_auth_login' && event.data.ack === true) {
                             window.removeEventListener('message', messageHandler);
                             resolve(true);
                         }
@@ -264,7 +264,7 @@ const Login = ({onCustomizeHeader}: LoginProps) => {
 
                 // Notify the parent
                 window.parent.postMessage({
-                    type: 'mattermost_external_auth_login',
+                    type: 'ping_external_auth_login',
                     provider,
                     href,
                 }, window.location.origin);

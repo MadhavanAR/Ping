@@ -59,11 +59,23 @@
         }
     }
 
-    &__login-button {
+    &__cta-buttons {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 8px;
+
+        @media screen and (max-width: 768px) {
+            flex-direction: column;
+            width: 100%;
+        }
+    }
+
+    &__trial-button {
         padding: 16px 48px;
-        border: 2px solid theme.$bg-white;
+        border: none;
         border-radius: theme.$radius-button;
-        margin-top: 16px;
         background: theme.$bg-white;
         color: theme.$primary-color;
         cursor: pointer;
@@ -71,16 +83,67 @@
         font-size: 18px;
         font-weight: 600;
         transition: all 0.3s ease;
+        box-shadow: theme.$shadow-md;
+
+        @media screen and (max-width: 768px) {
+            width: 100%;
+            padding: 14px 32px;
+            font-size: 16px;
+        }
 
         &:hover {
-            background: transparent;
-            color: theme.$bg-white;
+            background: rgba(255, 255, 255, 0.95);
             transform: translateY(-2px);
-            box-shadow: theme.$shadow-md;
+            box-shadow: theme.$shadow-lg;
         }
 
         &:active {
             transform: translateY(0);
+            box-shadow: theme.$shadow;
+        }
+    }
+
+    &__login-button {
+        padding: 16px 48px;
+        border: 2px solid theme.$bg-white;
+        border-radius: theme.$radius-button;
+        background: transparent;
+        color: theme.$bg-white;
+        cursor: pointer;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        font-size: 18px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+
+        @media screen and (max-width: 768px) {
+            width: 100%;
+            padding: 14px 32px;
+            font-size: 16px;
+        }
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.9);
+            transform: translateY(-2px);
+        }
+
+        &:active {
+            transform: translateY(0);
+        }
+    }
+
+    &__trial-info {
+        margin: 16px 0 0;
+        color: rgba(255, 255, 255, 0.85);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.5;
+        text-align: center;
+
+        @media screen and (max-width: 768px) {
+            font-size: 13px;
+            margin-top: 12px;
         }
     }
 }

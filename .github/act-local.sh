@@ -34,12 +34,13 @@ echo ""
 echo "🔧 Running workflow now (skipping push step)..."
 echo ""
 
-# Run the workflow, skipping the push step for local testing
+# Run the workflow
+# Note: Docker push step will fail without credentials, but build steps will run
 # Use linux/amd64 architecture for Apple Silicon compatibility
 if [[ $(uname -m) == "arm64" ]]; then
     echo "🍎 Detected Apple Silicon - using linux/amd64 architecture"
-    act push -W .github/workflows/ping-ci.yml --skip-push --container-architecture linux/amd64
+    act push -W .github/workflows/ping-ci.yml --container-architecture linux/amd64
 else
-    act push -W .github/workflows/ping-ci.yml --skip-push
+    act push -W .github/workflows/ping-ci.yml
 fi
 
