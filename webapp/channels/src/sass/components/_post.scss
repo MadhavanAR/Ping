@@ -1033,7 +1033,7 @@
         word-break: break-word;
         font-family: 'Inter', sans-serif;
         font-size: 15px;
-        color: rgba(0, 0, 0, 0.85);
+        color: var(--center-channel-color);
 
         &:last-child {
             margin-bottom: 0;
@@ -1274,7 +1274,7 @@
             font-weight: 600;
             font-family: 'Montserrat', sans-serif;
             font-size: 15px;
-            color: rgba(0, 0, 0, 0.9);
+            color: var(--center-channel-color);
             gap: 6px;
             text-overflow: ellipsis;
 
@@ -1445,7 +1445,7 @@
         font-family: 'Inter', sans-serif;
         font-size: 15px;
         line-height: 1.5;
-        color: rgba(0, 0, 0, 0.85);
+        color: var(--center-channel-color);
 
         &-reactions-acks {
             display: flex;
@@ -1675,7 +1675,7 @@
         opacity: 0;
         visibility: hidden;
         transition: opacity 0.15s ease, visibility 0.15s ease;
-        color: rgba(0, 0, 0, 0.5);
+        color: rgba(var(--center-channel-color-rgb), 0.5);
         font-family: 'Inter', sans-serif;
         font-weight: 400;
     }
@@ -1855,7 +1855,7 @@
         .embed-title {
             overflow: hidden;
             margin: 3px 0 1px;
-            color: #555;
+            color: rgba(var(--center-channel-color-rgb), 0.75);
             font-weight: 600;
             text-overflow: ellipsis;
             white-space: nowrap;
@@ -1864,7 +1864,7 @@
         .embed-description {
             overflow: hidden;
             margin: 0;
-            color: #888;
+            color: rgba(var(--center-channel-color-rgb), 0.64);
             text-overflow: ellipsis;
             white-space: nowrap;
         }

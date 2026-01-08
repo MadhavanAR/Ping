@@ -184,7 +184,7 @@ const Preferences = {
             mentionBj: '#6B4EFF',
             mentionColor: '#FFFFFF',
             centerChannelBg: '#191b1f',
-            centerChannelColor: '#e3e4e8',
+            centerChannelColor: '#E3E4E8',
             newMessageSeparator: '#6B4EFF',
             linkColor: '#8B7FFF',
             buttonBg: '#6B4EFF',
